@@ -15,8 +15,19 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20.x
-          cache: npm
-      - run: npm ci
+      - run: corepack enable pnpm
+
+      # pnpm cache
+      - id: pnpm
+        run: echo "cache-dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
+        with:
+          path: ${{ steps.pnpm.outputs.cache-dir }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      - run: pnpm install --frozen-lockfile
   build:
     name: Build
     runs-on: ubuntu-latest
@@ -26,9 +37,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20.x
-          cache: npm
-      - run: npm ci
-      - run: npm run build
+      - run: corepack enable pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
         env:
           NODE_ENV: production
   lint:
@@ -40,8 +51,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20.x
-          cache: npm
-      - run: npm run lint -- --max-warnings=0
+      - run: corepack enable pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint -- --max-warnings=0
   format:
     name: Format
     runs-on: ubuntu-latest
@@ -51,9 +63,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20.x
-          cache: npm
-      - run: npm ci
-      - run: npx prettier --check .
+      - run: corepack enable pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm prettier --check .
   typeCheck:
     name: Type Check
     runs-on: ubuntu-latest
@@ -63,6 +75,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20.x
-          cache: npm
-      - run: npm ci
-      - run: npm run type-check
+      - run: corepack enable pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm type-check
