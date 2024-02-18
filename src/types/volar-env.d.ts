@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/consistent-type-imports */
- 
 
 /**
  * volar global components
