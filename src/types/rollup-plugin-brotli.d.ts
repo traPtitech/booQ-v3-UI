@@ -1,1 +1,1 @@
-declare module 'rollup-plugin-brotli'
+declare module 'rollup-plugin-brotli';

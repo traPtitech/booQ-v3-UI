@@ -6,14 +6,14 @@
  * 適用されるようにするためにoverridesに'*.vue'を追加する
  */
 
-const typescriptEslintEslintRecommended = require('@typescript-eslint/eslint-plugin/dist/configs/eslint-recommended')
+const typescriptEslintEslintRecommended = require('@typescript-eslint/eslint-plugin/dist/configs/eslint-recommended');
 
 module.exports = {
   ...typescriptEslintEslintRecommended,
-  overrides: typescriptEslintEslintRecommended.overrides.map(override => {
+  overrides: typescriptEslintEslintRecommended.overrides.map((override) => {
     if (override.files.includes('*.ts')) {
-      return { ...override, files: [...override.files, '*.vue'] }
+      return { ...override, files: [...override.files, '*.vue'] };
     }
-    return override
-  })
-}
+    return override;
+  }),
+};

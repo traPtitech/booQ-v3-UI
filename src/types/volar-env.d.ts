@@ -8,31 +8,31 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    RouterLink: typeof import('vue-router')['RouterLink']
-    RouterView: typeof import('vue-router')['RouterView']
+    RouterLink: (typeof import('vue-router'))['RouterLink'];
+    RouterView: (typeof import('vue-router'))['RouterView'];
   }
 }
 
 interface DataAndAriaAttributes {
-  [dataAttr: `data${UppercaseAlphabet}${string}`]: unknown
-  [ariaAttr: `aria${UppercaseAlphabet}${string}`]: unknown
+  [dataAttr: `data${UppercaseAlphabet}${string}`]: unknown;
+  [ariaAttr: `aria${UppercaseAlphabet}${string}`]: unknown;
 }
 
 declare module '@vue/runtime-dom' {
   interface ImgHTMLAttributes {
-    loading?: 'eager' | 'lazy'
+    loading?: 'eager' | 'lazy';
   }
   interface HTMLAttributes extends DataAndAriaAttributes {
     // https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint
-    enterkeyhint?: string
+    enterkeyhint?: string;
   }
   interface SVGAttributes extends DataAndAriaAttributes {}
 }
 
 declare module '@vue/runtime-core' {
   interface AllowedComponentProps extends DataAndAriaAttributes {
-    title?: string
-    id?: string
+    title?: string;
+    id?: string;
   }
 }
 
@@ -62,6 +62,6 @@ type UppercaseAlphabet =
   | 'W'
   | 'X'
   | 'Y'
-  | 'Z'
+  | 'Z';
 
-export {}
+export {};

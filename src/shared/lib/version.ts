@@ -1,3 +1,3 @@
-declare const __VERSION__: string
+declare const __VERSION__: string;
 
-export default __VERSION__
+export default __VERSION__;
