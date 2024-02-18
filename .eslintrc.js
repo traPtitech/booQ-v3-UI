@@ -2,10 +2,10 @@ module.exports = {
   root: true,
   parserOptions: {
     parser: '@typescript-eslint/parser',
+    extraFileExtensions: ['.vue'],
   },
   extends: [
     'eslint:recommended',
-    './eslint-vue-ts-recommended.js',
     'plugin:@typescript-eslint/recommended',
     'plugin:vue/vue3-recommended',
     'prettier',
@@ -16,24 +16,6 @@ module.exports = {
     'no-empty': ['error', { allowEmptyCatch: true }],
     eqeqeq: 'error',
     'vue/eqeqeq': 'error',
-    'no-restricted-imports': [
-      'error',
-      {
-        name: '@/lib/apis/generated',
-        message: 'Please use @/lib/apis instead.',
-      },
-    ],
-    '@typescript-eslint/member-delimiter-style': [
-      'error',
-      {
-        multiline: {
-          delimiter: 'none',
-        },
-        singleline: {
-          delimiter: 'semi',
-        },
-      },
-    ],
     '@typescript-eslint/consistent-type-imports': 'error',
     'vue/require-default-prop': 'off',
     'vue/block-lang': [
