@@ -34,7 +34,7 @@
     "sass": "^1.57.1",
     "typescript": "^4.9.4",
     "vite": "^4.0.3",
-    "vite-plugin-purge-icons": "^0.9.2",
+    "vite-plugin-purge-icons": "^0.10.0",
     "vue-tsc": "^1.0.19"
   },
   "packageManager": "pnpm@8.15.3+sha256.fc4a49bd609550a41e14d20efbce802a4b892aa4cac877322de2f0924f122991"
