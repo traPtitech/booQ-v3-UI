@@ -8,7 +8,8 @@
     "preview": "vite preview",
     "lint": "eslint --cache .",
     "format": "prettier --cache --write .",
-    "type-check": "vue-tsc --noEmit"
+    "type-check": "vue-tsc --noEmit",
+    "gen-api": "pnpm openapi-typescript https://raw.githubusercontent.com/traPtitech/booQ-v3/main/docs/openapi.yml --output ./src/apis/openAPI.ts"
   },
   "dependencies": {
     "@iconify/iconify": "^3.1.1",
