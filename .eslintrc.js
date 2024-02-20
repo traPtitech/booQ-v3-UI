@@ -18,6 +18,7 @@ module.exports = {
     'vue/eqeqeq': 'error',
     '@typescript-eslint/consistent-type-imports': 'error',
     'vue/require-default-prop': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
     'vue/block-lang': [
       'error',
       {
