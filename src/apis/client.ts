@@ -7,9 +7,8 @@ import type { paths, components } from './openAPI';
 // declare fetcher for paths
 const fetcher = Fetcher.for<paths>();
 
-// global configuration
 fetcher.configure({
-  baseUrl: '', //どのURLを参照するかわからなかったので空にした
+  baseUrl: 'http://localhost:5173/',
   init: {},
   use: [], // middlewares
 });

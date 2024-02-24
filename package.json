@@ -9,7 +9,7 @@
     "lint": "eslint --cache .",
     "format": "prettier --cache --write .",
     "type-check": "vue-tsc --noEmit",
-    "gen-api": "pnpm openapi-typescript https://raw.githubusercontent.com/traPtitech/booQ-v3/main/docs/openapi.yml --output ./src/apis/openAPI.ts"
+    "gen-api": "pnpm openapi-typescript https://raw.githubusercontent.com/traPtitech/booQ-v3/main/docs/openapi.yml --output openAPI.ts"
   },
   "dependencies": {
     "@iconify/iconify": "^3.1.1",
@@ -20,7 +20,6 @@
   },
   "devDependencies": {
     "@iconify/json": "^2.2.183",
-    "@openapitools/openapi-generator-cli": "^2.9.0",
     "@traptitech/vite-plugin-trap-auth": "^0.3.1",
     "@types/node": "^20.11.19",
     "@typescript-eslint/eslint-plugin": "^7.0.1",
