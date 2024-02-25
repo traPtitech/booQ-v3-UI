@@ -189,7 +189,7 @@ export interface components {
     itemPosted: {
       /** @example 1 */
       id: number;
-      /** @example 小説　天気の子 */
+      /** @example 小説 天気の子 */
       name: string;
       /** @example 0 */
       isTrapItem: components['schemas']['isEquipment'];
