@@ -38,23 +38,21 @@ module.exports = {
     {
       // 直下のファイル
       files: ['*.{js,mjs}'],
-      excludedFiles: ['openAPI.ts'],
+      excludedFiles: ['*/**/*.{js,mjs}'],
       env: {
         node: true,
       },
-      rules: {
-        '@typescript-eslint/no-var-requires': 'off',
-        '@typescript-eslint/no-explicit-any': 'off',
+
+      rules: { '@typescript-eslint/no-var-requires': 'off' },
+    },
+    {
+      files: ['*openapi.ts'],
+      excludedFiles: ['*/**/*.{js,mjs}'],
+      env: {
+        node: true,
       },
-      overrides: [
-        {
-          env: {
-            node: true,
-          },
-          files: ['openAPI.ts'],
-          rules: { '@typescript-eslint/no-explicit-any': 'off' },
-        },
-      ],
+
+      rules: { '@typescript-eslint/no-explicit-any': 'off' },
     },
   ],
   reportUnusedDisableDirectives: true,

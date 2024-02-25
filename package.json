@@ -9,7 +9,7 @@
     "lint": "eslint --cache .",
     "format": "prettier --cache --write .",
     "type-check": "vue-tsc --noEmit",
-    "gen-api": "pnpm openapi-typescript https://raw.githubusercontent.com/traPtitech/booQ-v3/main/docs/openapi.yml --output openAPI.ts"
+    "gen-api": "pnpm openapi-typescript https://raw.githubusercontent.com/traPtitech/booQ-v3/main/docs/openapi.yml --output src/apis/openapi.ts"
   },
   "dependencies": {
     "@iconify/iconify": "^3.1.1",

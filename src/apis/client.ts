@@ -2,13 +2,13 @@ import 'whatwg-fetch';
 
 import { Fetcher } from 'openapi-typescript-fetch';
 
-import type { paths, components } from './openAPI';
+import type { paths, components } from './openapi';
 
 // declare fetcher for paths
 const fetcher = Fetcher.for<paths>();
 
 fetcher.configure({
-  baseUrl: 'http://localhost:5173/',
+  baseUrl: '/api',
   init: {},
   use: [], // middlewares
 });
