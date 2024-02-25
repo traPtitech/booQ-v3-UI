@@ -47,7 +47,6 @@ module.exports = {
     },
     {
       files: ['*openapi.ts'],
-      excludedFiles: ['*/**/*.{js,mjs}'],
       env: {
         node: true,
       },
