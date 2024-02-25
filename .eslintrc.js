@@ -42,9 +42,16 @@ module.exports = {
       env: {
         node: true,
       },
-      rules: {
-        '@typescript-eslint/no-var-requires': 'off',
+
+      rules: { '@typescript-eslint/no-var-requires': 'off' },
+    },
+    {
+      files: ['*src/apis/openapi.ts'],
+      env: {
+        node: true,
       },
+
+      rules: { '@typescript-eslint/no-explicit-any': 'off' },
     },
   ],
   reportUnusedDisableDirectives: true,
