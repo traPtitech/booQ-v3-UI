@@ -46,7 +46,7 @@ module.exports = {
       rules: { '@typescript-eslint/no-var-requires': 'off' },
     },
     {
-      files: ['*openapi.ts'],
+      files: ['*src/apis/openapi.ts'],
       env: {
         node: true,
       },
