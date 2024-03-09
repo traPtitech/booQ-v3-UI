@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import PrimeVue from 'primevue/config';
-import 'primevue/resources/primevue.min.css';
+import 'primevue/resources/themes/aura-light-green/theme.css';
 import router from './router';
 import App from './App.vue';
 
