@@ -4,6 +4,7 @@
     <div :class="$style['inner-container']">
       <main :class="$style.content">
         <router-view />
+        <Avatar />
       </main>
     </div>
     <footer>Footer</footer>
