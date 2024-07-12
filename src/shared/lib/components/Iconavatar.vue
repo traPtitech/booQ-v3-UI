@@ -6,7 +6,7 @@ defineProps<{
 </script>
 <template>
   <div>
-    <avatar
+    <Avatar
       :image="`https://q.trap.jp/api/v3/public/icon/${name}`"
       class="mr-2"
       size="xlarge"
