@@ -4,11 +4,11 @@
     :style="`width: ${props.width}; height: ${props.height}`"
   >
     <div :class="$style.title_wrapper">
-      <div :class="$style.title">選択肢</div>
+      <div :class="$style.title">{{ props.title }}</div>
       <radio-button input-id="1" name="ok" value="a" />
     </div>
-    <div :class="$style.text">
-      明選択肢1の説明選択肢1の説明選択肢1の説明選択肢1の説明
+    <div :class="$style.content">
+      {{ props.content }}
     </div>
   </div>
 </template>
@@ -18,6 +18,8 @@ import RadioButton from '@/shared/components/RadioButton.vue';
 
 const props = withDefaults(
   defineProps<{
+    title: string;
+    content: string;
     width?: string;
     height?: string;
   }>(),
@@ -50,7 +52,7 @@ props.width;
   font-weight: bold;
 }
 
-.text {
+.content {
   color: $color-text-secondary;
   font-size: 16px;
   line-height: 150%;
