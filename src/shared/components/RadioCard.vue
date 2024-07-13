@@ -4,7 +4,9 @@
       <div :class="$style.title">選択肢</div>
       <radio-button input-id="1" name="ok" value="a" />
     </div>
-    <div :class="$style.text">選択肢1の説明</div>
+    <div :class="$style.text">
+      明選択肢1の説明選択肢1の説明選択肢1の説明選択肢1の説明
+    </div>
   </div>
 </template>
 
@@ -25,8 +27,8 @@ props.width;
 
 <style lang="scss" module>
 .container {
-  width: 360px;
-  height: 120px;
+  width: 351px;
+  height: 112px;
   padding: 16px;
   font-size: 16px;
   border: 1px solid $color-secondary;
@@ -48,5 +50,7 @@ props.width;
 .text {
   color: $color-text-secondary;
   font-size: 16px;
+  line-height: 150%;
+  text-align: left;
 }
 </style>
