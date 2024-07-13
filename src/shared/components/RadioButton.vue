@@ -6,15 +6,25 @@
     :name="props.name"
     :value="props.value"
   />
-  <label :for="props.inputId" :class="$style.label"></label>
+  <label
+    :for="props.inputId"
+    :class="$style.label"
+    :style="`width: ${props.size}; height: ${props.size}`"
+  ></label>
 </template>
 
 <script lang="ts" setup>
-const props = defineProps<{
-  inputId: string;
-  name: string;
-  value: string;
-}>();
+const props = withDefaults(
+  defineProps<{
+    inputId: string;
+    name: string;
+    value: string;
+    size?: string;
+  }>(),
+  {
+    size: '24px',
+  },
+);
 </script>
 
 <style lang="scss" module>
@@ -23,8 +33,6 @@ const props = defineProps<{
 }
 
 .label {
-  width: 24px;
-  height: 24px;
   cursor: pointer;
   position: relative;
 }
@@ -50,8 +58,8 @@ const props = defineProps<{
 
 .input:checked + .label::after {
   content: '';
-  width: 12px;
-  height: 12px;
+  width: 50%;
+  height: 50%;
   border-radius: 50%;
   background-color: $color-background;
   position: absolute;
