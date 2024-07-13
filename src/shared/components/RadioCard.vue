@@ -2,7 +2,7 @@
   <div :class="$style.container">
     <div :class="$style.title_wrapper">
       <div :class="$style.title">選択肢</div>
-      <radio-button input-id="1" name="ok" />
+      <radio-button input-id="1" name="ok" value="a" />
     </div>
     <div :class="$style.text">選択肢1の説明</div>
   </div>
