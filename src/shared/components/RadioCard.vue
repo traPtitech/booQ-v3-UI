@@ -1,5 +1,8 @@
 <template>
-  <div :class="$style.container">
+  <div
+    :class="$style.container"
+    :style="`width: ${props.width}; height: ${props.height}`"
+  >
     <div :class="$style.title_wrapper">
       <div :class="$style.title">選択肢</div>
       <radio-button input-id="1" name="ok" value="a" />
@@ -16,9 +19,11 @@ import RadioButton from '@/shared/components/RadioButton.vue';
 const props = withDefaults(
   defineProps<{
     width?: string;
+    height?: string;
   }>(),
   {
-    width: '320px',
+    width: '351px',
+    height: '112px',
   },
 );
 
@@ -27,8 +32,6 @@ props.width;
 
 <style lang="scss" module>
 .container {
-  width: 351px;
-  height: 112px;
   padding: 16px;
   font-size: 16px;
   border: 1px solid $color-secondary;
