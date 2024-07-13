@@ -2,14 +2,14 @@
   <div :class="$style.container">
     <div :class="$style.title_wrapper">
       <div :class="$style.title">選択肢</div>
-      <radio-button />
+      <radio-button input-id="1" name="ok" />
     </div>
     <div :class="$style.text">選択肢1の説明</div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import RadioButton from 'primevue/radiobutton';
+import RadioButton from '@/shared/components/RadioButton.vue';
 
 const props = withDefaults(
   defineProps<{
@@ -25,8 +25,8 @@ props.width;
 
 <style lang="scss" module>
 .container {
-  width: 351px;
-  height: 112px;
+  width: 360px;
+  height: 120px;
   padding: 16px;
   font-size: 16px;
   border: 1px solid $color-secondary;
@@ -36,12 +36,13 @@ props.width;
 .title_wrapper {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
 }
 
 .title {
   color: $color-text-primary;
   font-weight: bold;
-  margin-bottom: 8px;
 }
 
 .text {
