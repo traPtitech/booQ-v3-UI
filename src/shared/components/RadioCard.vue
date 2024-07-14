@@ -5,6 +5,7 @@
     type="radio"
     :name="props.name"
     :value="props.value"
+    @change="model = props.value"
   />
   <label
     :class="$style.container"
@@ -37,6 +38,8 @@ const props = withDefaults(
     height: '88px',
   },
 );
+
+const model = defineModel<string>();
 </script>
 
 <style lang="scss" module>

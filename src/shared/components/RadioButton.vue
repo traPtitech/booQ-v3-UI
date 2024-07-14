@@ -5,6 +5,7 @@
     type="radio"
     :name="props.name"
     :value="props.value"
+    @change="model = props.value"
   />
   <label
     :for="props.inputId"
@@ -26,6 +27,8 @@ const props = withDefaults(
     size: '24px',
   },
 );
+
+const model = defineModel<string>();
 </script>
 
 <style lang="scss" module>
