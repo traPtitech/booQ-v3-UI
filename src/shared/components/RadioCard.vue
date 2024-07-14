@@ -49,6 +49,10 @@ const props = withDefaults(
   cursor: pointer;
 }
 
+.container:hover {
+  background-color: $color-primary-hover;
+}
+
 .input:checked + .container {
   box-shadow: inset 0 0 0 3px $color-primary;
 }
