@@ -65,13 +65,16 @@ const model = defineModel<string>();
 .title_wrapper {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   align-self: stretch;
 }
 
 .title {
   color: $color-text-primary;
-  font-weight: bold;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 
 .content {
