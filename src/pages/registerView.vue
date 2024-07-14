@@ -6,7 +6,8 @@
       <div :class="$style.itemC">C</div>
     </div>
   </div>
-  <radio-card title="testtesttest" content="testtest" />
+  <radio-card title="testtesttest" content="testtest" input-id="1" name="ok" />
+  <radio-card title="testtesttest" content="testtes" input-id="2" name="ok" />
 </template>
 
 <script setup lang="ts">

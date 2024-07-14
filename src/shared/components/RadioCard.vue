@@ -1,16 +1,16 @@
 <template>
-  <div
+  <label
     :class="$style.container"
     :style="`width: ${props.width}; height: ${props.height}`"
   >
     <div :class="$style.title_wrapper">
       <div :class="$style.title">{{ props.title }}</div>
-      <radio-button input-id="1" name="ok" value="a" />
+      <radio-button :input-id="props.inputId" :name="props.name" value="a" />
     </div>
     <div :class="$style.content">
       {{ props.content }}
     </div>
-  </div>
+  </label>
 </template>
 
 <script lang="ts" setup>
@@ -20,6 +20,8 @@ const props = withDefaults(
   defineProps<{
     title: string;
     content: string;
+    inputId: string;
+    name: string;
     width?: string;
     height?: string;
   }>(),
@@ -28,16 +30,16 @@ const props = withDefaults(
     height: '112px',
   },
 );
-
-props.width;
 </script>
 
 <style lang="scss" module>
 .container {
+  display: inline-block;
   padding: 16px;
   font-size: 16px;
   border: 1px solid $color-secondary;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .title_wrapper {
