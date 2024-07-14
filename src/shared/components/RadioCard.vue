@@ -5,7 +5,11 @@
   >
     <div :class="$style.title_wrapper">
       <div :class="$style.title">{{ props.title }}</div>
-      <radio-button :input-id="props.inputId" :name="props.name" value="a" />
+      <radio-button
+        :input-id="props.inputId"
+        :name="props.name"
+        :value="props.value"
+      />
     </div>
     <div :class="$style.content">
       {{ props.content }}
@@ -22,6 +26,7 @@ const props = withDefaults(
     content: string;
     inputId: string;
     name: string;
+    value: string;
     width?: string;
     height?: string;
   }>(),
