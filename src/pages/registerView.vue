@@ -6,27 +6,9 @@
       <div :class="$style.itemC">C</div>
     </div>
   </div>
-  <div>
-    <radio-card
-      title="testtesttest"
-      content="testtest"
-      input-id="1"
-      name="ok"
-      value="a"
-    />
-    <radio-card
-      title="testtesttest"
-      content="testtes"
-      input-id="2"
-      name="ok"
-      value="b"
-    />
-  </div>
 </template>
 
-<script setup lang="ts">
-import RadioCard from '@/shared/components/RadioCard.vue';
-</script>
+<script setup lang="ts"></script>
 
 <style lang="scss" module>
 .wrapper {

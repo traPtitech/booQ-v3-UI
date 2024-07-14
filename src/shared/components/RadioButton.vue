@@ -10,7 +10,8 @@
     :for="props.inputId"
     :class="$style.label"
     :style="`width: ${props.size}; height: ${props.size}`"
-  ></label>
+  >
+  </label>
 </template>
 
 <script lang="ts" setup>
@@ -33,6 +34,7 @@ const props = withDefaults(
 }
 
 .label {
+  display: inline-block;
   cursor: pointer;
   position: relative;
 }
