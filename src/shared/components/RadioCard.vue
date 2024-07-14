@@ -9,7 +9,7 @@
   />
   <label
     :class="$style.container"
-    :style="`width: ${props.width}; height: ${props.height}`"
+    :style="`width: ${props.width}`"
     :for="props.inputId"
   >
     <div :class="$style.title_wrapper">
@@ -35,7 +35,6 @@ const props = withDefaults(
   }>(),
   {
     width: '310px',
-    height: '88px',
   },
 );
 
@@ -46,9 +45,12 @@ const model = defineModel<string>();
 .container {
   box-shadow: inset 0 0 0 1px $color-secondary;
   border-radius: 4px;
-  display: inline-block;
+  display: flex;
+  width: 351px;
   padding: 16px;
-  font-size: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
   cursor: pointer;
 }
 
@@ -63,8 +65,8 @@ const model = defineModel<string>();
 .title_wrapper {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
+  align-items: flex-start;
+  align-self: stretch;
 }
 
 .title {
@@ -73,9 +75,13 @@ const model = defineModel<string>();
 }
 
 .content {
-  color: $color-text-secondary;
   font-size: 16px;
   text-align: left;
+  align-self: stretch;
+  color: $color-text-dimmed;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .input {
@@ -87,6 +93,7 @@ const model = defineModel<string>();
   position: relative;
   width: 24px;
   height: 24px;
+  flex-shrink: 0;
 }
 
 .btn::before {
