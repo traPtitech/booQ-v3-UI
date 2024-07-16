@@ -6,9 +6,18 @@
       <div :class="$style.itemC">C</div>
     </div>
   </div>
+  <radio-card
+    title="選択肢"
+    content="選択肢選択肢選択肢選択肢選択肢選択肢選択肢選択肢"
+    input-id="1"
+    name="a"
+    value="a"
+  />
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import RadioCard from '@/shared/components/RadioCard.vue';
+</script>
 
 <style lang="scss" module>
 .wrapper {

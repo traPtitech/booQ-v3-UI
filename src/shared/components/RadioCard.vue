@@ -7,11 +7,7 @@
     :value="props.value"
     @change="model = props.value"
   />
-  <label
-    :class="$style.container"
-    :style="`width: ${props.width}`"
-    :for="props.inputId"
-  >
+  <label :class="$style.container" :for="props.inputId">
     <div :class="$style.title_wrapper">
       <div :class="$style.title">{{ props.title }}</div>
       <div :class="$style.btn"></div>
@@ -23,20 +19,13 @@
 </template>
 
 <script lang="ts" setup>
-const props = withDefaults(
-  defineProps<{
-    title: string;
-    content: string;
-    inputId: string;
-    name: string;
-    value: string;
-    width?: string;
-    height?: string;
-  }>(),
-  {
-    width: '310px',
-  },
-);
+const props = defineProps<{
+  title: string;
+  content: string;
+  inputId: string;
+  name: string;
+  value: string;
+}>();
 
 const model = defineModel<string>();
 </script>
