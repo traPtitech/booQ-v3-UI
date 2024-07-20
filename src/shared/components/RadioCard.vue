@@ -1,19 +1,20 @@
 <template>
-  <input
-    :id="props.inputId"
-    :class="$style.input"
-    type="radio"
-    :name="props.name"
-    :value="props.value"
-    @change="model = props.value"
-  />
-  <label :class="$style.container" :for="props.inputId">
-    <div :class="$style.title_wrapper">
-      <div :class="$style.title">{{ props.title }}</div>
-      <div :class="$style.btn"></div>
-    </div>
-    <div :class="$style.content">
-      {{ props.content }}
+  <label>
+    <input
+      :class="$style.input"
+      type="radio"
+      :name="props.name"
+      :value="props.value"
+      @change="model = props.value"
+    />
+    <div :class="$style.container">
+      <div :class="$style.title_wrapper">
+        <div :class="$style.title">{{ props.title }}</div>
+        <div :class="$style.btn"></div>
+      </div>
+      <div :class="$style.content">
+        {{ props.content }}
+      </div>
     </div>
   </label>
 </template>
@@ -22,7 +23,6 @@
 const props = defineProps<{
   title: string;
   content: string;
-  inputId: string;
   name: string;
   value: string;
 }>();
