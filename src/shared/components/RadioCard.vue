@@ -35,7 +35,6 @@ const model = defineModel<string>();
   box-shadow: inset 0 0 0 1px $color-secondary;
   border-radius: 4px;
   display: flex;
-  width: 351px;
   padding: 16px;
   flex-direction: column;
   align-items: flex-start;
