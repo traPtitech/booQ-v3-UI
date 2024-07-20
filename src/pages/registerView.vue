@@ -9,7 +9,6 @@
   <radio-card
     title="選択肢"
     content="選択肢選択肢選択肢選択肢選択肢選択肢選択肢選択肢"
-    input-id="1"
     name="a"
     value="a"
   />
