@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
+import chip from 'primevue/chip';
 
 defineProps<{
-  name: string;
+  label: string;
 }>();
 </script>
 <template>
-  <div>
-    <div class="p-chip">
-      <span>{{ name }}</span>
-    </div>
-  </div>
+  <chip class="p-chip">
+    <span>{{ label }}</span>
+  </chip>
 </template>

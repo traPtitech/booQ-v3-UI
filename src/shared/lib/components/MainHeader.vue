@@ -1,39 +1,34 @@
 <template>
-  <div>
+  <div class="content">
     <div class="header">
-      <Iconavatar :name="dynamicName" />
-    </div>
-    <div class="content">
-      <Chiptag :name="dynamicName2" />
-    </div>
-    <div class="content">
-      <Chipcard></Chipcard>
+      <img
+        src="/safari-pinned-tab.svg"
+        alt="Safari Pinned Tab Icon"
+        style="width: 40px; filter: brightness(70%)"
+      />
+      <ChipCard :label="ChipLabel" />
+      <IconAvatar :name="UserName" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import Iconavatar from '@/shared/lib/components/Iconavatar.vue';
-import Chipcard from '@/shared/lib/components/Chipcard.vue';
-import Chiptag from '@/shared/lib/components/Chiptag.vue';
-const dynamicName = 'o_ER4'; // 実際は指定のユーザーの名前を取得する
-const dynamicName2 = 'test1';
+import IconAvatar from '@/shared/lib/components/IconAvatar.vue';
+import ChipCard from '@/shared/lib/components/ChipCard.vue';
+const UserName = 'o_ER4'; // 実際は指定のユーザーの名前を取得する
+const ChipLabel = '物品を追加'; //ボタンのラベルをpropsで使えるようにして使いまわす
 </script>
 
 <style lang="scss" module>
+.content {
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  justify-content: flex-start;
+  justify-content: space-between;
+}
 .header {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 10px;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  background-color: white;
-}
-
-.content {
-  padding: 20px;
+  justify-content: space-between;
 }
 </style>
