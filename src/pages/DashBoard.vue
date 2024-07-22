@@ -1,5 +1,4 @@
 <template>
-  <div>Here is dashboard</div>
   <div><MainHeader></MainHeader></div>
 </template>
 

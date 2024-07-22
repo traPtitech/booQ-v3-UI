@@ -8,7 +8,7 @@ defineProps<{
   <Avatar
     :image="`https://q.trap.jp/api/v3/public/icon/${name}`"
     class="mr-2"
-    size="xlarge"
+    size="32px"
     shape="circle"
   />
 </template>
