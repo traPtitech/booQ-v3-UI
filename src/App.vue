@@ -1,12 +1,10 @@
 <template>
   <div :class="$style.container">
-    <header>Header</header>
     <div :class="$style['inner-container']">
       <main :class="$style.content">
-        <router-view />
+        <RouterView />
       </main>
     </div>
-    <footer>Footer</footer>
   </div>
 </template>
 
