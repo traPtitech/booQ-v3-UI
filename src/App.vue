@@ -3,7 +3,6 @@
     <div :class="$style['inner-container']">
       <main :class="$style.content">
         <RouterView />
-        <Avatar />
       </main>
     </div>
   </div>

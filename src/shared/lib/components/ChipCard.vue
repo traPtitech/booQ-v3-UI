@@ -6,12 +6,12 @@ defineProps<{
 </script>
 
 <template>
-  <Button class="butoncolor"
+  <Button class="button-color"
     ><span>{{ label }}</span></Button
   >
 </template>
 <style lang="scss" scoped>
-.butoncolor {
+.button-color {
   background-color: $color-primary;
   border-color: $color-primary;
   border-width: 2px;
@@ -19,10 +19,10 @@ defineProps<{
   font-weight: 700;
   line-height: normal;
 }
-.butoncolor:active {
+.buton-color:active {
   border-color: $color-border-hover;
 }
-.butoncolor:hover {
+.buton-color:hover {
   background-color: $color-primary-hover;
 }
 </style>
