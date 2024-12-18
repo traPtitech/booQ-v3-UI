@@ -1,7 +1,7 @@
 @use 'sass:math';
 
 $color-primary: #5cb860;
-$color-primary-hover: #7fc782;
+$color-primary-hover: #eef7ee;
 $color-primary-disabled: #a9d0ab;
 
 $color-secondary: #e2e2e2;
@@ -11,12 +11,15 @@ $color-secondary-disabled: #c9cac9;
 $color-border-hover: #2b2b2b;
 $color-error: #ff4500;
 
-$color-text-primary: #2b2b2b;
+$color-text-primary: #1a1a1c;
 $color-text-primary-disabled: #7a7a7a;
 $color-text-secondary: #515151;
 $color-text-secondary-pale: #5151515d;
 $color-text-secondary-disabled: #939393;
 $color-text-white: #ffffff;
+$color-text-dimmed: #626264;
+
+$color-container-secondary: #f1f1f4;
 
 $color-background: #ffffff;
 $color-background-dim: #2b2b2baa;
