@@ -5,7 +5,7 @@
     </div>
     <div class="right-box">
       <ChipCard :label="chipLabel" />
-      <IconAvatar :name="userName" />
+      <IconAvatar :name="userName" :pixel="36" />
     </div>
   </div>
 </template>
