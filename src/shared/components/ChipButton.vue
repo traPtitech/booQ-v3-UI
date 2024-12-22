@@ -6,7 +6,7 @@ const props = defineProps<{
   label: string;
   chipType: number;
 }>();
-defineEmits(['onClick']);
+defineEmits(['action']);
 
 const chipStyle = computed(() => ({
   'button-chip': props.chipType === 0,
@@ -15,7 +15,7 @@ const chipStyle = computed(() => ({
 </script>
 
 <template>
-  <Button class="button" :class="chipStyle" @click="$emit('onClick')">
+  <Button class="button" :class="chipStyle" @click="$emit('action')">
     <span>{{ label }}</span>
     <svg
       v-if="chipType === 0"
