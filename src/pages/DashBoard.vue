@@ -69,6 +69,7 @@ const lendingItems = [
 .sectionTitle {
   margin-bottom: 16px;
   font-size: 1.5rem;
+  text-align: left;
 }
 
 .scrollContainer {
@@ -82,7 +83,6 @@ const lendingItems = [
 
 .itemCard {
   flex: 0 0 auto;
-  width: 120px;
   text-align: center;
   border-radius: 8px;
   padding: 8px;
@@ -91,8 +91,8 @@ const lendingItems = [
 }
 
 .image {
-  width: 100%;
-  height: 100px;
+  width: 160px;
+  height: 227px;
   object-fit: contain;
   border-radius: 4px;
 }
