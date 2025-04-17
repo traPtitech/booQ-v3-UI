@@ -86,8 +86,8 @@ const lendingItems = [
   text-align: center;
   border-radius: 8px;
   padding: 8px;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: $color-container-primary;
+  box-shadow: 0 2px 4px $color-background-dim;
 }
 
 .image {
