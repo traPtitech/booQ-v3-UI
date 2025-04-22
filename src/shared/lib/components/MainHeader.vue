@@ -14,7 +14,7 @@
 import IconAvatar from '@/shared/lib/components/IconAvatar.vue';
 import ChipCard from '@/shared/lib/components/ChipCard.vue';
 import ServiceLogo from '@/shared/lib/components/ServiceLogo.vue';
-const userName = 'Pugma'; // 実際は指定のユーザーの名前を取得する
+const userName = 'o_ER4'; // 実際は指定のユーザーの名前を取得する
 const chipLabel = '物品を追加'; //ボタンのラベルをpropsで使えるようにして使いまわす
 </script>
 
