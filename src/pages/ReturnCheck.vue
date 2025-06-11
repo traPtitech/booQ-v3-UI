@@ -14,7 +14,7 @@
     <div>
       <div :class="$style['cardContainer']">
         <ChipCard label="キャンセル" @click="handleCancel" />
-        <ChipCard label="返却する" @click="handleReturn" color="primary" />
+        <ChipCard label="返却する" @click="handleReturn" />
       </div>
     </div>
   </div>
