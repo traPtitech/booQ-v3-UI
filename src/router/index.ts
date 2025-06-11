@@ -18,9 +18,10 @@ const routes: RouteRecordRaw[] = [
     component: RegisterView,
   },
   {
-    path: '/return-check',
+    path: '/return-check/userName&productName',
     name: 'return-check',
     component: ReturnCheck,
+    props: true,
   },
   {
     path: '/return-check/ok',
