@@ -5,26 +5,54 @@
   </div>
   <div>
     <div :class="$style.container">
-      <strong>{{ userName }}</strong> さんに「<strong>{{ productTitle }}</strong
-      >」を返却しようとしています
+      <strong v-if="userName">{{ userName }}</strong>
+      <span v-else>ユーザー情報</span> さんに「<strong v-if="productTitle">{{
+        productTitle
+      }}</strong
+      ><span v-else>物品情報</span>」を返却しようとしています
     </div>
     <div>
       <div :class="$style['cardContainer']">
-        <ChipCard label="キャンセル" />
-        <ChipCard label="返却する" />
+        <ChipCard label="キャンセル" @click="handleCancel" />
+        <ChipCard label="返却する" @click="handleReturn" color="primary" />
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { ref, onMounted } from 'vue';
 import MainHeader from '@/shared/lib/components/MainHeader.vue';
 import ChipCard from '@/shared/lib/components/ChipCard.vue';
 import returnSvg from '/returnicon.svg';
+import { useRouter } from 'vue-router';
 
-// APIが完成するまでのダミーデータ
-const userName = 'o_ER4';
-const productTitle = 'Vue.js入門';
+const router = useRouter();
+
+const userName = ref<string>('');
+const productTitle = ref<string>('');
+
+async function fetchUserDataAndProduct() {
+  try {
+    userName.value = 'o_ER4 (API)';
+    productTitle.value = 'Vue.js入門 (API)';
+  } catch (error) {
+    userName.value = '取得エラー';
+    productTitle.value = '取得エラー';
+  }
+}
+
+onMounted(() => {
+  fetchUserDataAndProduct();
+});
+
+const handleCancel = () => {
+  router.back(); 
+};
+
+const handleReturn = () => {
+  router.push('/return-check/ok');
+};
 </script>
 
 <style lang="scss" module>
@@ -32,6 +60,9 @@ const productTitle = 'Vue.js入門';
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 16px;
+  text-align: center; 
+  margin-top: 20px; 
+  font-size: 1.2rem; 
 }
 
 .section {
@@ -81,18 +112,18 @@ const productTitle = 'Vue.js入門';
 .svgContainer {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin: 40px 0; 
 }
 
 .svgImage {
-  max-width: 100%;
+  max-width: 150px; 
   height: auto;
 }
 
 .cardContainer {
   display: flex;
   justify-content: center;
-  gap: 16px;
-  margin: 20px 0;
+  gap: 24px; 
+  margin: 40px 0; 
 }
 </style>
