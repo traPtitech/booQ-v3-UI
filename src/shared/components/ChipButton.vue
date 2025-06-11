@@ -4,22 +4,21 @@ import Button from 'primevue/button';
 import IconClose from './IconClose.vue';
 import IconPlus from './IconPlus.vue';
 
-const props = defineProps<{
+interface Props {
   label: string;
   type: 'default' | 'show-close' | 'new';
   colorType?: 'primary' | 'secondary' | 'error';
-}>();
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  colorType: 'primary',
+});
 defineEmits(['action', 'close']);
 
 const chipStyle = computed(() => {
-  const styles: Record<string, boolean> = {};
-  if (props.type === 'new') {
-    styles['button-newchip'] = true;
-  } else {
-    styles['button-chip'] = true;
-    styles[`button-${props.colorType || 'primary'}`] = true;
-  }
-  return styles;
+  return props.type === 'new'
+    ? ['button-newchip']
+    : ['button-chip', `button-${props.colorType ?? 'primary'}`];
 });
 </script>
 
