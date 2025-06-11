@@ -22,11 +22,11 @@ const routes: RouteRecordRaw[] = [
     name: 'return-check',
     component: returnCheck,
   },
-  {path: '/return-check/ok',
+  {
+    path: '/return-check/ok',
     name: 'return-check-ok',
     component: returnCheckok,
-
-  }
+  },
 ];
 
 export default createRouter({

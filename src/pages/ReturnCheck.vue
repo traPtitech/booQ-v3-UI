@@ -9,10 +9,10 @@
       >」を返却しようとしています
     </div>
     <div>
-    <div :class="$style['cardContainer']">
-      <ChipCard :label="label1" />
-      <ChipCard :label="label2" />
-    </div>
+      <div :class="$style['cardContainer']">
+        <ChipCard :label="label1" />
+        <ChipCard :label="label2" />
+      </div>
     </div>
   </div>
 </template>
