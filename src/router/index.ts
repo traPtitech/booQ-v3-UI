@@ -1,8 +1,8 @@
 import type { RouteRecordRaw } from 'vue-router';
 import { createRouter, createWebHistory } from 'vue-router';
-import registerView from '@/pages/registerView.vue';
-import returnCheck from '@/pages/ReturnCheck.vue';
-import returnCheckok from '@/pages/ReturnCheckOK.vue';
+import RegisterView from '@/pages/registerView.vue';
+import ReturnCheck from '@/pages/ReturnCheck.vue';
+import ReturnCheckOk from '@/pages/ReturnCheckOK.vue';
 
 export const routerHistory = createWebHistory();
 
@@ -15,17 +15,17 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/register',
     name: 'register',
-    component: registerView,
+    component: RegisterView,
   },
   {
     path: '/return-check',
     name: 'return-check',
-    component: returnCheck,
+    component: ReturnCheck,
   },
   {
     path: '/return-check/ok',
     name: 'return-check-ok',
-    component: returnCheckok,
+    component: ReturnCheckOk,
   },
 ];
 

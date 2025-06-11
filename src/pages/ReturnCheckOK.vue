@@ -8,7 +8,7 @@
 
 <script lang="ts" setup>
 import MainHeader from '@/shared/lib/components/MainHeader.vue';
-import returnSvg from '/mdi_check-circle.svg';
+import returnSvg from '/returnok.svg';
 
 // APIが完成するまでのダミーデータ
 </script>

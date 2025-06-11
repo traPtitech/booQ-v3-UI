@@ -1,17 +1,17 @@
 <template>
   <div><MainHeader></MainHeader></div>
   <div :class="$style['svgContainer']">
-    <img :src="returnSvg" alt="QR Code" :class="$style['svgImage']" />
+    <img :src="returnSvg" alt="" :class="$style['svgImage']" />
   </div>
   <div>
     <div :class="$style.container">
-      <strong>{{ userName }}</strong> さんに「<strong>{{ bookTitle }}</strong
+      <strong>{{ userName }}</strong> さんに「<strong>{{ productTitle }}</strong
       >」を返却しようとしています
     </div>
     <div>
       <div :class="$style['cardContainer']">
-        <ChipCard :label="label1" />
-        <ChipCard :label="label2" />
+        <ChipCard label="キャンセル" />
+        <ChipCard label="返却する" />
       </div>
     </div>
   </div>
@@ -20,13 +20,11 @@
 <script lang="ts" setup>
 import MainHeader from '@/shared/lib/components/MainHeader.vue';
 import ChipCard from '@/shared/lib/components/ChipCard.vue';
-import returnSvg from '/550 1.svg';
+import returnSvg from '/returnicon.svg';
 
 // APIが完成するまでのダミーデータ
 const userName = 'o_ER4';
-const bookTitle = 'Vue.js入門';
-const label1 = 'キャンセル';
-const label2 = '返却する';
+const productTitle = 'Vue.js入門';
 </script>
 
 <style lang="scss" module>
