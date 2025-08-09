@@ -2,15 +2,15 @@
 import { defineProps } from 'vue';
 
 defineProps<{
-  placeholder: string;
-  size: number;
+  placeholder?: string;
+  size: 'sm' | 'md' | 'lg';
 }>();
 </script>
 
 <template>
   <div class="background">
-    <div v-if="$slots['left']" class="side-icon">
-      <slot name="left" />
+    <div v-if="$slots['left']">
+      <slot name="left" class="side-icon" />
     </div>
     <input
       type="text"
@@ -18,8 +18,8 @@ defineProps<{
       :size="size"
       :placeholder="placeholder"
     />
-    <div v-if="$slots['right']" class="side-icon">
-      <slot name="right" />
+    <div v-if="$slots['right']">
+      <slot name="right" class="side-icon" />
     </div>
   </div>
 </template>
@@ -29,12 +29,14 @@ defineProps<{
   display: inline flex;
   height: 32px;
   align-items: center;
-  border-color: $color-border;
-  border: 1px solid;
-  border-radius: 4px;
+  border:
+    1px solid,
+    $color-border border-color,
+    1px solid radius;
 }
 .background:focus-within {
   outline: 2px solid;
+  outline-color: $color-primary;
 }
 .text-input {
   height: 32px;
