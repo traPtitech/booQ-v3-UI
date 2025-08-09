@@ -29,11 +29,10 @@ defineProps<{
   display: inline flex;
   height: 32px;
   align-items: center;
-  border:
-    1px solid,
-    $color-border border-color,
-    1px solid radius;
+  border: 1px solid1px solid $color-border;
+  border-radius: 1px solid;
 }
+
 .background:focus-within {
   outline: 2px solid;
   outline-color: $color-primary;
@@ -49,7 +48,6 @@ defineProps<{
 }
 .text-input::placeholder {
   color: $color-text-placeholder;
-  opacity: 1;
 }
 .side-icon {
   display: flex;
