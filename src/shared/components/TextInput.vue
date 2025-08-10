@@ -29,8 +29,8 @@ defineProps<{
   display: inline flex;
   height: 32px;
   align-items: center;
-  border: 1px solid1px solid $color-border;
-  border-radius: 1px solid;
+  border: 1px solid $color-border;
+  border-radius: 4px;
 }
 
 .background:focus-within {
