@@ -96,10 +96,7 @@ let returnDate = new Date(2024, 1, 22);
 }
 
 .message {
-  color: #000;
-  font-family: 'Mplus 1p';
   font-size: 20px;
-  font-style: normal;
   font-weight: 500;
   line-height: normal;
 
@@ -111,10 +108,7 @@ let returnDate = new Date(2024, 1, 22);
 
 .text {
   margin: 0;
-  color: #000;
-  font-family: 'Mplus 1p';
   font-size: 16px;
-  font-style: normal;
   font-weight: 500;
   line-height: normal;
 
