@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es2018",
+    "target": "es2024",
     "module": "esnext",
     "strict": true,
     "noFallthroughCasesInSwitch": true,
     "noPropertyAccessFromIndexSignature": true,
     "noUncheckedIndexedAccess": true,
     "verbatimModuleSyntax": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "isolatedModules": true,

@@ -3,138 +3,265 @@
  * Do not make direct changes to the file.
  */
 
-/** OneOf type helpers */
-type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
-type XOR<T, U> = T | U extends object
-  ? (Without<T, U> & U) | (Without<U, T> & T)
-  : T | U;
-type OneOf<T extends any[]> = T extends [infer Only]
-  ? Only
-  : T extends [infer A, infer B, ...infer Rest]
-    ? OneOf<[XOR<A, B>, ...Rest]>
-    : never;
-
 export interface paths {
   '/items': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     /** 物品の一覧を取得します。 */
     get: operations['getItems'];
+    put?: never;
     /** 物品を新しく登録します。 */
     post: operations['postItem'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/items/{itemId}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description アイテムID */
+        itemId: components['parameters']['itemIdInPath'];
+      };
+      cookie?: never;
+    };
     /** 物品の詳細情報を取得します。 */
     get: operations['getItem'];
+    put?: never;
+    post?: never;
     /** 物品を削除します。 */
     delete: operations['deleteItem'];
+    options?: never;
+    head?: never;
     /** 物品の情報を変更します。 */
     patch: operations['editItem'];
-    parameters: {
-      path: {
-        itemId: components['parameters']['itemIdInPath'];
-      };
-    };
+    trace?: never;
   };
   '/items/{itemId}/comments': {
-    /** コメントを新規作成します。 */
-    post: operations['postComment'];
     parameters: {
+      query?: never;
+      header?: never;
       path: {
+        /** @description アイテムID */
         itemId: components['parameters']['itemIdInPath'];
       };
+      cookie?: never;
     };
+    get?: never;
+    put?: never;
+    /** コメントを新規作成します。 */
+    post: operations['postComment'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/items/{itemId}/owners': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description アイテムID */
+        itemId: components['parameters']['itemIdInPath'];
+      };
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * 物品の所有者を追加します。
      * @description 他者の所有権を操作する場合は権限が必要です。
      */
     post: operations['postItemOwners'];
-    parameters: {
-      path: {
-        itemId: components['parameters']['itemIdInPath'];
-      };
-    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/items/{itemId}/owners/{ownershipId}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description アイテムID */
+        itemId: components['parameters']['itemIdInPath'];
+        /** @description 所有権ID */
+        ownershipId: components['parameters']['ownershipIdInPath'];
+      };
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
     /**
      * 物品の所有者を削除します
      * @description 他者の所有権を操作する場合は権限が必要です。
      */
     delete: operations['deleteItemOwners'];
+    options?: never;
+    head?: never;
     /**
      * 物品の所有者を編集します。(所有者と管理者のみ)
      * @description 他者の所有権を操作する場合は権限が必要です。
      */
     patch: operations['editItemOwners'];
-    parameters: {
-      path: {
-        itemId: components['parameters']['itemIdInPath'];
-        ownershipId: components['parameters']['ownershipIdInPath'];
-      };
-    };
+    trace?: never;
   };
   '/items/{itemId}/borrowing/equipment': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description アイテムID */
+        itemId: components['parameters']['itemIdInPath'];
+      };
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /** 備品を借ります。 */
     post: operations['postBorrowEquipment'];
-    parameters: {
-      path: {
-        itemId: components['parameters']['itemIdInPath'];
-      };
-    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/items/{itemId}/borrowing/equipment/return': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description アイテムID */
+        itemId: components['parameters']['itemIdInPath'];
+      };
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /** 備品を返します。 */
     post: operations['postBorrowEquipmentReturn'];
-    parameters: {
-      path: {
-        itemId: components['parameters']['itemIdInPath'];
-      };
-    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/items/{itemId}/owners/{ownershipId}/borrowings': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description アイテムID */
+        itemId: components['parameters']['itemIdInPath'];
+        /** @description 所有権ID */
+        ownershipId: components['parameters']['ownershipIdInPath'];
+      };
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /** 個人所有物を「借りたい」と意見表明します。 */
     post: operations['postBorrow'];
-    parameters: {
-      path: {
-        itemId: components['parameters']['itemIdInPath'];
-        ownershipId: components['parameters']['ownershipIdInPath'];
-      };
-    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/items/{itemId}/owners/{ownershipId}/borrowings/{borrowingId}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description アイテムID */
+        itemId: components['parameters']['itemIdInPath'];
+        /** @description 所有権ID */
+        ownershipId: components['parameters']['ownershipIdInPath'];
+        /** @description 所有権ID */
+        borrowingId: components['parameters']['borrowingIdInPath'];
+      };
+      cookie?: never;
+    };
     /** 個人所有物を借りたいという要望を取得します。 (○○日に借りたい、○○日に返す予定、など) */
     get: operations['getBorrowingById'];
-    parameters: {
-      path: {
-        itemId: components['parameters']['itemIdInPath'];
-        ownershipId: components['parameters']['ownershipIdInPath'];
-        borrowingId: components['parameters']['borrowingIdInPath'];
-      };
-    };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/items/{itemId}/owners/{ownershipId}/borrowings/{borrowingId}/reply': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description アイテムID */
+        itemId: components['parameters']['itemIdInPath'];
+        /** @description 所有権ID */
+        ownershipId: components['parameters']['ownershipIdInPath'];
+        /** @description 所有権ID */
+        borrowingId: components['parameters']['borrowingIdInPath'];
+      };
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /** 個人所有物を○○日まで借りたいという要望に対して返答します。 */
     post: operations['postBorrowReply'];
-    parameters: {
-      path: {
-        itemId: components['parameters']['itemIdInPath'];
-        ownershipId: components['parameters']['ownershipIdInPath'];
-        borrowingId: components['parameters']['borrowingIdInPath'];
-      };
-    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/items/{itemId}/owners/{ownershipId}/borrowings/{borrowingId}/return': {
-    /** 個人所有物を返します。 */
-    post: operations['postReturn'];
     parameters: {
+      query?: never;
+      header?: never;
       path: {
+        /** @description アイテムID */
         itemId: components['parameters']['itemIdInPath'];
+        /** @description 所有権ID */
         ownershipId: components['parameters']['ownershipIdInPath'];
+        /** @description 所有権ID */
         borrowingId: components['parameters']['borrowingIdInPath'];
       };
+      cookie?: never;
     };
+    get?: never;
+    put?: never;
+    /** 個人所有物を返します。 */
+    post: operations['postReturn'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/items/{itemId}/likes': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description アイテムID */
+        itemId: components['parameters']['itemIdInPath'];
+      };
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * 物品にいいねをつけます。
      * @description すでにいいねしている状態の場合、エラー(400)を返します。
@@ -145,50 +272,65 @@ export interface paths {
      * @description すでに所有済み状態の場合、エラー(400)を返します。
      */
     delete: operations['removeLike'];
-    parameters: {
-      path: {
-        itemId: components['parameters']['itemIdInPath'];
-      };
-    };
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/files': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /** 画像ファイルをアップロードします。 */
     post: operations['postFile'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/files/{fileId}': {
-    /** 画像ファイルをダウンロードします。 */
-    get: operations['getFile'];
     parameters: {
+      query?: never;
+      header?: never;
       path: {
+        /** @description ファイルID */
         fileId: components['parameters']['fileIdInPath'];
       };
+      cookie?: never;
     };
+    /** 画像ファイルをダウンロードします。 */
+    get: operations['getFile'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
 }
-
 export type webhooks = Record<string, never>;
-
 export interface components {
   schemas: {
     /**
      * isBook
-     * @description アイテム種別
-     * 0: 本でない
-     * 1: 本
-     * @enum {integer}
+     * @description アイテム種別 本でない/本
      */
-    isBook: 0 | 1;
+    isBook: boolean;
     /**
      * isEquipment
-     * @description アイテム種別
-     * 0: 個人所有
-     * 1: 備品
-     * @enum {integer}
+     * @description アイテム種別 個人所有/備品
      */
-    isEquipment: 0 | 1;
+    isEquipment: boolean;
     itemPosted: {
       /** @example 1 */
-      id: number;
+      readonly id: number;
       /** @example 小説 天気の子 */
       name: string;
       /** @example 0 */
@@ -211,77 +353,73 @@ export interface components {
        * Format: date-time
        * @example 2019-07-28T22:00:00Z
        */
-      createdAt: string;
+      readonly createdAt: string;
       /**
        * Format: date-time
        * @example 2019-07-28T22:00:00Z
        */
-      updatedAt: string;
+      readonly updatedAt: string;
       /**
        * Format: date-time
        * @example 2019-07-28T22:00:00Z
        */
-      deletedAt: string | null;
+      readonly deletedAt: string | null;
     };
     item: components['schemas']['itemPosted'] &
       ({
-        tags: readonly components['schemas']['tag'][];
-        comments: readonly components['schemas']['comment'][];
-      } & OneOf<
-        [
-          {
+        readonly tags: components['schemas']['tag'][];
+        readonly comments: components['schemas']['comment'][];
+      } & (
+        | {
             count: number;
             countMax: number;
-          },
-          {
+          }
+        | {
             ownerships: components['schemas']['ownership'][];
-          },
-        ]
-      >);
+          }
+      ));
     itemSummary: components['schemas']['item'] & {
       /** @example 1 */
-      likeCounts: number;
+      readonly likeCounts: number;
       /** @example true */
-      isLiked: boolean;
+      readonly isLiked: boolean;
     };
     itemDetail: components['schemas']['item'] &
       ({
-        likesByUsers?: readonly string[];
-      } & OneOf<
-        [
-          {
+        readonly likesByUsers?: string[];
+      } & (
+        | {
             transactionsEquipment: components['schemas']['transactionEquipment'][];
-          },
-          {
+          }
+        | {
             transactions: components['schemas']['transaction'][];
-          },
-        ]
-      >);
+          }
+      ));
     comment: {
       /** @example 1 */
-      id: number;
+      readonly id: number;
       /** @example 1 */
-      itemId: number;
-      item: components['schemas']['itemSummary'];
+      readonly itemId: number;
+      readonly item: components['schemas']['itemSummary'];
       /** @example s9 */
-      userId: string;
+      readonly userId: string;
       /** @example 小説版は夏美の心理描写がよく描かれていて、映画版を補完するものになっている。あとがきと解説だけでも読む価値はあると思います。 */
       text: string;
       /**
        * Format: date-time
        * @example 2019-07-28T22:00:00Z
        */
-      createdAt: string;
+      readonly createdAt: string;
       /**
        * Format: date-time
        * @example 2019-07-28T22:00:00Z
        */
-      updatedAt: string;
+      readonly updatedAt: string;
       /**
        * Format: date-time
        * @example 2019-07-28T22:00:00Z
        */
-      deletedAt: string | null;
+      readonly deletedAt: string | null;
     };
     postComment: {
       /** @example 小説版は夏美の心理描写がよく描かれていて、映画版を補完するものになっている。あとがきと解説だけでも読む価値はあると思います。 */
@@ -289,16 +427,16 @@ export interface components {
     };
     transaction: {
       /** @example 1 */
-      id: number;
+      readonly id: number;
       /** @example 1 */
-      ownershipId: number;
+      readonly ownershipId: number;
       /** @example s9 */
-      userId: string;
+      readonly userId: string;
       /**
        * @description 0=リクエスト済み、1=貸し出し中、2=返却済み、3=貸し出し拒否
        * @example 1
        */
-      status: number;
+      readonly status: number;
       /** @example 読みたかったから。 */
       purpose?: string;
       /** @example 2/17に部室でお貸しします */
@@ -324,30 +462,30 @@ export interface components {
        * Format: date-time
        * @example 2019-07-28T22:00:00Z
        */
-      createdAt: string;
+      readonly createdAt: string;
       /**
        * Format: date-time
        * @example 2019-07-28T22:00:00Z
        */
-      updatedAt: string;
+      readonly updatedAt: string;
       /**
        * Format: date-time
        * @example 2019-07-28T22:00:00Z
        */
-      deletedAt: string | null;
+      readonly deletedAt: string | null;
     };
     transactionEquipment: {
       /** @example 1 */
-      id: number;
+      readonly id: number;
       /** @example 1 */
-      itemId?: number;
+      readonly itemId?: number;
       /** @example s9 */
-      userId: string;
+      readonly userId: string;
       /**
        * @description 0=リクエスト済み、1=貸し出し中、2=返却済み、3=貸し出し拒否
        * @example 1
        */
-      status: number;
+      readonly status: number;
       /** @example 読みたかったから。 */
       purpose?: string;
       /**
@@ -364,17 +502,17 @@ export interface components {
        * Format: date-time
        * @example 2019-07-28T22:00:00Z
        */
-      createdAt: string;
+      readonly createdAt: string;
       /**
        * Format: date-time
        * @example 2019-07-28T22:00:00Z
        */
-      updatedAt: string;
+      readonly updatedAt: string;
       /**
        * Format: date-time
        * @example 2019-07-28T22:00:00Z
        */
-      deletedAt: string | null;
+      readonly deletedAt: string | null;
     };
     borrowRequest: {
       /** @example 読みたかったから。 */
@@ -425,15 +563,16 @@ export interface components {
     };
     ownership: {
       /** @example 1 */
-      id: number;
+      readonly id: number;
       /** @example 1 */
-      itemId: number;
+      readonly itemId: number;
       /** @example s9 */
       userId: string;
       /** @example true */
       rentalable: boolean;
       /** @example おもしろいのでぜひ読んでください */
       memo: string;
+      transaction?: components['schemas']['transaction'];
     };
     postOwnership: {
       /** @example s9 */
@@ -504,13 +643,8 @@ export interface components {
   headers: never;
   pathItems: never;
 }
-
 export type $defs = Record<string, never>;
-
-export type external = Record<string, never>;
-
 export interface operations {
-  /** 物品の一覧を取得します。 */
   getItems: {
     parameters: {
       query?: {
@@ -531,22 +665,37 @@ export interface operations {
         /** @description 何の要素でソートするか */
         sortby?: string;
       };
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
       /** @description OK */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           'application/json': components['schemas']['itemSummary'][];
         };
       };
       /** @description リクエストが不正です */
       400: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /** 物品を新しく登録します。 */
   postItem: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     requestBody: {
       content: {
         'application/json': components['schemas']['itemPosted'][];
@@ -555,64 +704,96 @@ export interface operations {
     responses: {
       /** @description Created */
       201: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
-          'application/json': components['schemas']['itemPosted'];
+          'application/json': components['schemas']['itemPosted'][];
         };
       };
       /** @description リクエストボディが不正です。 */
       400: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description 権限がありません */
       403: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /** 物品の詳細情報を取得します。 */
   getItem: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
+        /** @description アイテムID */
         itemId: components['parameters']['itemIdInPath'];
       };
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
       /** @description OK */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           'application/json': components['schemas']['itemDetail'];
         };
       };
       /** @description アイテムが存在しません */
       404: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /** 物品を削除します。 */
   deleteItem: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
+        /** @description アイテムID */
         itemId: components['parameters']['itemIdInPath'];
       };
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
       /** @description OK */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description アイテムが存在しません */
       404: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /** 物品の情報を変更します。 */
   editItem: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
+        /** @description アイテムID */
         itemId: components['parameters']['itemIdInPath'];
       };
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -622,26 +803,38 @@ export interface operations {
     responses: {
       /** @description OK */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           'application/json': components['schemas']['item'];
         };
       };
       /** @description リクエストボディが不正です。 */
       400: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description アイテムが存在しません */
       404: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /** コメントを新規作成します。 */
   postComment: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
+        /** @description アイテムID */
         itemId: components['parameters']['itemIdInPath'];
       };
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -651,29 +844,38 @@ export interface operations {
     responses: {
       /** @description Created */
       201: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           'application/json': components['schemas']['comment'];
         };
       };
       /** @description リクエストボディが不正です。 */
       400: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description アイテムが存在しません */
       404: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * 物品の所有者を追加します。
-   * @description 他者の所有権を操作する場合は権限が必要です。
-   */
   postItemOwners: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
+        /** @description アイテムID */
         itemId: components['parameters']['itemIdInPath'];
       };
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -683,56 +885,77 @@ export interface operations {
     responses: {
       /** @description Created */
       201: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           'application/json': components['schemas']['ownership'];
         };
       };
       /** @description 権限がありません。 */
       403: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description アイテムが存在しません */
       404: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * 物品の所有者を削除します
-   * @description 他者の所有権を操作する場合は権限が必要です。
-   */
   deleteItemOwners: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
+        /** @description アイテムID */
         itemId: components['parameters']['itemIdInPath'];
+        /** @description 所有権ID */
         ownershipId: components['parameters']['ownershipIdInPath'];
       };
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
       /** @description OK */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description 権限がありません。 */
       403: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description アイテムが存在しません */
       404: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * 物品の所有者を編集します。(所有者と管理者のみ)
-   * @description 他者の所有権を操作する場合は権限が必要です。
-   */
   editItemOwners: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
+        /** @description アイテムID */
         itemId: components['parameters']['itemIdInPath'];
+        /** @description 所有権ID */
         ownershipId: components['parameters']['ownershipIdInPath'];
       };
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -742,26 +965,38 @@ export interface operations {
     responses: {
       /** @description OK */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           'application/json': components['schemas']['ownership'];
         };
       };
       /** @description 権限がありません。 */
       403: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description アイテムが存在しません */
       404: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /** 備品を借ります。 */
   postBorrowEquipment: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
+        /** @description アイテムID */
         itemId: components['parameters']['itemIdInPath'];
       };
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -771,26 +1006,38 @@ export interface operations {
     responses: {
       /** @description Created */
       201: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           'application/json': components['schemas']['borrowRequestEquipment'];
         };
       };
       /** @description リクエストボディが不正です。 */
       400: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description アイテムが存在しません */
       404: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /** 備品を返します。 */
   postBorrowEquipmentReturn: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
+        /** @description アイテムID */
         itemId: components['parameters']['itemIdInPath'];
       };
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -800,27 +1047,40 @@ export interface operations {
     responses: {
       /** @description Created */
       201: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           'application/json': components['schemas']['borrowReturn'];
         };
       };
       /** @description リクエストボディが不正です。 */
       400: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description アイテムが存在しません */
       404: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /** 個人所有物を「借りたい」と意見表明します。 */
   postBorrow: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
+        /** @description アイテムID */
         itemId: components['parameters']['itemIdInPath'];
+        /** @description 所有権ID */
         ownershipId: components['parameters']['ownershipIdInPath'];
       };
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -830,54 +1090,83 @@ export interface operations {
     responses: {
       /** @description OK */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           'application/json': components['schemas']['borrowRequest'];
         };
       };
       /** @description リクエストボディが不正です。 */
       400: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description アイテムが存在しません */
       404: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /** 個人所有物を借りたいという要望を取得します。 (○○日に借りたい、○○日に返す予定、など) */
   getBorrowingById: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
+        /** @description アイテムID */
         itemId: components['parameters']['itemIdInPath'];
+        /** @description 所有権ID */
         ownershipId: components['parameters']['ownershipIdInPath'];
+        /** @description 所有権ID */
         borrowingId: components['parameters']['borrowingIdInPath'];
       };
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
       /** @description OK */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           'application/json': components['schemas']['borrowing'];
         };
       };
       /** @description リクエストボディが不正です。 */
       400: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description アイテムが存在しません */
       404: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /** 個人所有物を○○日まで借りたいという要望に対して返答します。 */
   postBorrowReply: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
+        /** @description アイテムID */
         itemId: components['parameters']['itemIdInPath'];
+        /** @description 所有権ID */
         ownershipId: components['parameters']['ownershipIdInPath'];
+        /** @description 所有権ID */
         borrowingId: components['parameters']['borrowingIdInPath'];
       };
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -887,28 +1176,42 @@ export interface operations {
     responses: {
       /** @description OK */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           'application/json': components['schemas']['borrowReply'];
         };
       };
       /** @description リクエストボディが不正です。 */
       400: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description アイテムが存在しません */
       404: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /** 個人所有物を返します。 */
   postReturn: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
+        /** @description アイテムID */
         itemId: components['parameters']['itemIdInPath'];
+        /** @description 所有権ID */
         ownershipId: components['parameters']['ownershipIdInPath'];
+        /** @description 所有権ID */
         borrowingId: components['parameters']['borrowingIdInPath'];
       };
+      cookie?: never;
     };
     requestBody: {
       content: {
@@ -918,70 +1221,104 @@ export interface operations {
     responses: {
       /** @description OK */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description リクエストボディが不正です。 */
       400: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description アイテムが存在しません */
       404: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * 物品にいいねをつけます。
-   * @description すでにいいねしている状態の場合、エラー(400)を返します。
-   */
   addLike: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
+        /** @description アイテムID */
         itemId: components['parameters']['itemIdInPath'];
       };
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
       /** @description 正常にいいねしました */
       201: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description 不正なリクエストです */
       400: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description 指定されたアイテムが存在しません */
       404: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /**
-   * 物品のいいねを取り消します。
-   * @description すでに所有済み状態の場合、エラー(400)を返します。
-   */
   removeLike: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
+        /** @description アイテムID */
         itemId: components['parameters']['itemIdInPath'];
       };
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
       /** @description 正常に削除しました */
       200: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description 不正なリクエストです */
       400: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description 指定されたアイテムが存在しません */
       404: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /** 画像ファイルをアップロードします。 */
   postFile: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     requestBody: {
       content: {
         'multipart/form-data': {
@@ -996,33 +1333,49 @@ export interface operations {
     responses: {
       /** @description OK */
       201: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           'application/json': components['schemas']['file'];
         };
       };
       /** @description 不正なリクエストです。 */
       400: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
-  /** 画像ファイルをダウンロードします。 */
   getFile: {
     parameters: {
+      query?: never;
+      header?: never;
       path: {
+        /** @description ファイルID */
         fileId: components['parameters']['fileIdInPath'];
       };
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
       /** @description OK */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           'image/jpeg': string;
         };
       };
       /** @description ファイルが存在しません。 */
       404: {
-        content: never;
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
