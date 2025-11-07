@@ -2,11 +2,10 @@ import { defineConfig } from 'vite';
 import path from 'path';
 import packageJson from './package.json';
 import VuePlugin from '@vitejs/plugin-vue';
-import PurgeIcons from 'vite-plugin-purge-icons';
 import brotli from 'rollup-plugin-brotli';
 import { PluginTrapAuth } from '@traptitech/vite-plugin-trap-auth';
 import autoprefixer from 'autoprefixer';
-import postcssNormalize from 'postcss-normalize';
+// import postcssNormalize from 'postcss-normalize';
 import dns from 'node:dns';
 
 dns.setDefaultResultOrder('ipv4first');
@@ -35,17 +34,14 @@ export default defineConfig(({ mode }) => ({
       },
     },
     postcss: {
-      plugins: [
-        postcssNormalize(),
-        ...(mode === 'production' ? [autoprefixer()] : []),
-      ],
+      plugins: mode === 'production' ? [autoprefixer()] : [],
     },
     devSourcemap: true,
   },
   define: {
     __VERSION__: `"${packageJson.version}"`,
   },
-  plugins: [VuePlugin(), PurgeIcons(), brotli(), PluginTrapAuth()],
+  plugins: [VuePlugin(), brotli(), PluginTrapAuth()],
   optimizeDeps: {
     include: ['@iconify/iconify'],
   },
