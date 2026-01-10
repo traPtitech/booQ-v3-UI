@@ -7,7 +7,7 @@ import brotli from 'rollup-plugin-brotli';
 import { PluginTrapAuth } from '@traptitech/vite-plugin-trap-auth';
 import autoprefixer from 'autoprefixer';
 import postcssNormalize from 'postcss-normalize';
-import tailwindcss from '@tailwindcss/vite'; // 追加
+import tailwindcss from '@tailwindcss/vite'; 
 import dns from 'node:dns';
 
 dns.setDefaultResultOrder('ipv4first');

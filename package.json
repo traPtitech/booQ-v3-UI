@@ -34,7 +34,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-vue": "^9.21.1",
     "openapi-typescript": "^6.7.4",
-    "postcss": "^8.4.35",
+    "postcss": "^8.5.6",
     "postcss-normalize": "^10.0.1",
     "prettier": "^3.2.5",
     "rollup-plugin-brotli": "^3.1.0",
