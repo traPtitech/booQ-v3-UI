@@ -1,9 +1,11 @@
 <template>
-  <div class="box">
-    <div class="left-box">
+  <div
+    class="flex items-center justify-between px-8 py-4 border-b border-[var(--color-secondary)]"
+  >
+    <div class="mr-auto">
       <ServiceLogo />
     </div>
-    <div class="right-box">
+    <div class="flex items-center gap-4">
       <ChipCard :label="chipLabel" />
       <IconAvatar :name="userName" :pixel="36" />
     </div>
@@ -17,24 +19,3 @@ import ServiceLogo from '@/shared/lib/components/ServiceLogo.vue';
 const userName = 'o_ER4'; // 実際は指定のユーザーの名前を取得する
 const chipLabel = '物品を追加'; //ボタンのラベルをpropsで使えるようにして使いまわす
 </script>
-
-<style lang="scss" scoped>
-.box {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 32px;
-  border-bottom: 1px solid $color-secondary;
-}
-
-.left-box {
-  margin-right: auto;
-}
-
-.right-box {
-  display: flex;
-  align-items: center;
-  padding: 16px, 32px;
-  gap: 16px;
-}
-</style>

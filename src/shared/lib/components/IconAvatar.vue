@@ -13,13 +13,7 @@ const size = computed(() => `${props.pixel}px`);
     :src="`https://q.trap.jp/api/v3/public/icon/` + name"
     :width="pixel"
     :height="pixel"
+    class="rounded-full"
+    :style="{ width: size, height: size }"
   />
 </template>
-
-<style lang="scss" scoped>
-img {
-  border-radius: 50%;
-  width: v-bind(size);
-  height: v-bind(size);
-}
-</style>
