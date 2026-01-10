@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   root: true,
   parserOptions: {
     parser: '@typescript-eslint/parser',
@@ -36,21 +36,18 @@ export default {
   },
   overrides: [
     {
-      // 直下のファイル
+      files: ['.eslintrc.cjs'],
+      env: { node: true },
+    },
+    {
       files: ['*.{js,mjs}'],
       excludedFiles: ['*/**/*.{js,mjs}'],
-      env: {
-        node: true,
-      },
-
+      env: { node: true },
       rules: { '@typescript-eslint/no-var-requires': 'off' },
     },
     {
       files: ['*src/apis/openapi.ts'],
-      env: {
-        node: true,
-      },
-
+      env: { node: true },
       rules: { '@typescript-eslint/no-explicit-any': 'off' },
     },
   ],
