@@ -39,7 +39,7 @@ export default defineConfig(({ mode }) => ({
     __VERSION__: `"${packageJson.version}"`,
   },
   plugins: [
-    tailwindcss(), // 追加
+    tailwindcss(), 
     VuePlugin(),
     PurgeIcons(),
     brotli(),
