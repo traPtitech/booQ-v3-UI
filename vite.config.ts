@@ -7,6 +7,7 @@ import brotli from 'rollup-plugin-brotli';
 import { PluginTrapAuth } from '@traptitech/vite-plugin-trap-auth';
 import autoprefixer from 'autoprefixer';
 import postcssNormalize from 'postcss-normalize';
+import tailwindcss from '@tailwindcss/vite';
 import dns from 'node:dns';
 
 dns.setDefaultResultOrder('ipv4first');
@@ -29,9 +30,8 @@ export default defineConfig(({ mode }) => ({
     preprocessorOptions: {
       scss: {
         additionalData: `
-          @use "sass:math";
-          @import "@/styles/common.scss";
-        `,
+            @import "@/styles/common.scss";
+          `,
       },
     },
     postcss: {
@@ -45,7 +45,13 @@ export default defineConfig(({ mode }) => ({
   define: {
     __VERSION__: `"${packageJson.version}"`,
   },
-  plugins: [VuePlugin(), PurgeIcons(), brotli(), PluginTrapAuth()],
+  plugins: [
+    VuePlugin(),
+    PurgeIcons(),
+    brotli(),
+    PluginTrapAuth(),
+    tailwindcss(),
+  ],
   optimizeDeps: {
     include: ['@iconify/iconify'],
   },
