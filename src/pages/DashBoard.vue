@@ -35,8 +35,6 @@
 <script lang="ts" setup>
 import MainHeader from '@/shared/lib/components/MainHeader.vue';
 
-// APIが完成するまでのダミーデータ
-// publicフォルダの画像を使用
 const borrowedItems = [
   { src: '/apple-touch-icon.png', alt: '借りている物品1', name: '物品1' },
   { src: '/favicon-32x32.png', alt: '借りている物品2', name: '物品2' },
@@ -86,8 +84,8 @@ const lendingItems = [
   text-align: center;
   border-radius: 8px;
   padding: 8px;
-  background-color: $color-background;
-  box-shadow: 0 2px 4px $color-background-dim;
+  background-color: var(--color-background-light);
+  box-shadow: 0 2px 4px var(--color-background-dim);
 }
 
 .image {

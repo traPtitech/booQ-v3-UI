@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import Button from 'primevue/button';
-
 interface Props {
   label: string;
   color?: 'primary' | 'error' | 'secondary';
@@ -10,11 +9,10 @@ const props = withDefaults(defineProps<Props>(), {
   color: 'primary',
 });
 
-// Tailwind クラスを色ごとに定義
 const colorClasses = {
   primary: [
-    'bg-(--color-primary)',
-    'border(--color-primary)',
+    'bg-[var(--color-primary)]',
+    'border-[var(--color-primary)]',
     'text-[var(--color-text-white)]',
     'hover:bg-[var(--color-primary-hover)]',
     'hover:border-[var(--color-border-hover)]',
@@ -43,6 +41,10 @@ const colorClasses = {
     :pt="{
       root: {
         class: [
+          'h-10',
+          'px-4',
+          'py-2',
+          'rounded-md',
           'border-2',
           'text-base',
           'font-bold',

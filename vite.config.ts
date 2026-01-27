@@ -23,7 +23,6 @@ export default defineConfig(({ mode }) => ({
       scss: {
         additionalData: `
           @use "sass:math";
-          @import "@/styles/common.scss";
         `,
       },
     },
@@ -39,7 +38,7 @@ export default defineConfig(({ mode }) => ({
     __VERSION__: `"${packageJson.version}"`,
   },
   plugins: [
-    tailwindcss(), 
+    tailwindcss(),
     VuePlugin(),
     PurgeIcons(),
     brotli(),

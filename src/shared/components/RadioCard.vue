@@ -32,7 +32,7 @@ const model = defineModel<string>();
 
 <style lang="scss" module>
 .container {
-  box-shadow: inset 0 0 0 1px $color-secondary;
+  box-shadow: inset 0 0 0 1px var(--color-secondary);
   border-radius: 4px;
   display: flex;
   padding: 16px;
@@ -43,11 +43,11 @@ const model = defineModel<string>();
 }
 
 .container:hover {
-  background-color: $color-primary-hover;
+  background-color: var(--color-primary-hover);
 }
 
 .input:checked + .container {
-  box-shadow: inset 0 0 0 3px $color-primary;
+  box-shadow: inset 0 0 0 3px var(--color-primary);
 }
 
 .title_wrapper {
@@ -58,7 +58,7 @@ const model = defineModel<string>();
 }
 
 .title {
-  color: $color-text-primary;
+  color: var(--color-text-primary);
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -69,7 +69,7 @@ const model = defineModel<string>();
   font-size: 16px;
   text-align: left;
   align-self: stretch;
-  color: $color-text-dimmed;
+  color: var(--color-text-dimmed);
   font-size: 16px;
   font-weight: 500;
   line-height: normal;
@@ -92,8 +92,8 @@ const model = defineModel<string>();
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-color: $color-container-secondary;
-  border: 2px solid $color-secondary;
+  background-color: var(--color-container-secondary);
+  border: 2px solid var(--color-secondary);
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -102,7 +102,7 @@ const model = defineModel<string>();
 }
 
 .input:checked + .container .title_wrapper .btn::before {
-  background-color: $color-primary;
+  background-color: var(--color-primary);
   border: none;
 }
 
@@ -111,7 +111,7 @@ const model = defineModel<string>();
   width: 50%;
   height: 50%;
   border-radius: 50%;
-  background-color: $color-background;
+  background-color: var(--color-background-light);
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
