@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 /* カスタムカラー（CSS変数） */
 @layer base {
@@ -28,5 +28,22 @@
 
     --color-background: #ffffff;
     --color-background-dim: #2b2b2baa;
+
+    --p-primary-50: #eef7ee;
+    --p-primary-100: #dcefdd;
+    --p-primary-200: #b9dfbb;
+    --p-primary-300: #96cf99;
+    --p-primary-400: #73bf77;
+    --p-primary-500: #5cb860;
+    --p-primary-600: #4a934d;
+    --p-primary-700: #376e3a;
+    --p-primary-800: #254a26;
+    --p-primary-900: #122513;
+    --p-primary-950: #091309;
+
+    --p-primary-color: var(--color-primary);
+    --p-primary-contrast-color: var(--color-text-white);
+    --p-primary-hover-color: var(--p-primary-600);
+    --p-primary-active-color: var(--p-primary-700);
   }
 }

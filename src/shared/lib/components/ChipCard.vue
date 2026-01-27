@@ -13,8 +13,8 @@ const props = withDefaults(defineProps<Props>(), {
 // Tailwind クラスを色ごとに定義
 const colorClasses = {
   primary: [
-    'bg-[var(--color-primary)]',
-    'border-[var(--color-primary)]',
+    'bg-(--color-primary)',
+    'border(--color-primary)',
     'text-[var(--color-text-white)]',
     'hover:bg-[var(--color-primary-hover)]',
     'hover:border-[var(--color-border-hover)]',
@@ -58,4 +58,3 @@ const colorClasses = {
     }"
   />
 </template>
-EOF
