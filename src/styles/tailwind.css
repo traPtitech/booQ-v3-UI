@@ -1,5 +1,6 @@
 @layer primevue;
 @import 'tailwindcss';
+@import 'tailwindcss-primeui';
 
 :root {
   --color-primary: #5cb860;
@@ -45,4 +46,23 @@
   --p-primary-contrast-color: var(--color-text-white);
   --p-primary-hover-color: var(--p-primary-600);
   --p-primary-active-color: var(--p-primary-700);
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-background);
+}
+
+#app {
+  font-family: 'M PLUS 1p', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: var(--color-text-primary);
+  height: 100%;
+  width: 100%;
 }

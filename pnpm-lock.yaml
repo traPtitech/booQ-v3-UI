@@ -20,6 +20,9 @@ dependencies:
   primevue:
     specifier: ^4.5.4
     version: 4.5.4(vue@3.5.26)
+  tailwindcss-primeui:
+    specifier: ^0.6.1
+    version: 0.6.1(tailwindcss@4.1.18)
   vue:
     specifier: ^3.5.1
     version: 3.5.26(typescript@5.3.3)
@@ -3608,12 +3611,22 @@ packages:
     engines: { node: '>=12' }
     dev: true
 
+  /tailwindcss-primeui@0.6.1(tailwindcss@4.1.18):
+    resolution:
+      {
+        integrity: sha512-T69Rylcrmnt8zy9ik+qZvsLuRIrS9/k6rYJSIgZ1trnbEzGDDQSCIdmfyZknevqiHwpSJHSmQ9XT2C+S/hJY4A==,
+      }
+    peerDependencies:
+      tailwindcss: '>=3.1.0'
+    dependencies:
+      tailwindcss: 4.1.18
+    dev: false
+
   /tailwindcss@4.1.18:
     resolution:
       {
         integrity: sha512-4+Z+0yiYyEtUVCScyfHCxOYP06L5Ne+JiHhY2IjR2KWMIWhJOYZKLSGZaP5HkZ8+bY0cxfzwDE5uOmzFXyIwxw==,
       }
-    dev: true
 
   /tapable@2.3.0:
     resolution:

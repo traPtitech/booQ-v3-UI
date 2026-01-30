@@ -5,7 +5,6 @@ import Aura from '@primevue/themes/aura';
 import router from './router';
 import App from './App.vue';
 
-import './index.scss';
 import './styles/tailwind.css';
 import '@purge-icons/generated';
 
