@@ -77,6 +77,8 @@ const lendingItems = [
   padding: 16px 0;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .itemCard {

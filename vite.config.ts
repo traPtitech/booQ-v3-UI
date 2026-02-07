@@ -44,4 +44,7 @@ export default defineConfig(({ mode }) => ({
     brotli(),
     PluginTrapAuth(),
   ],
+  optimizeDeps: {
+    include: ['@iconify/iconify'],
+  },
 }));

@@ -16,7 +16,7 @@ const size = computed(() => `${props.pixel}px`);
   />
 </template>
 
-<style lang="postcss">
+<style lang="postcss" module>
 .icon-avator {
   @apply rounded-full;
   width: v-bind(size);
