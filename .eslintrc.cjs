@@ -22,7 +22,6 @@ module.exports = {
       'error',
       {
         script: { lang: 'ts' },
-        style: { lang: 'scss' },
       },
     ],
     'vue/component-api-style': ['error', ['script-setup']],
