@@ -12,13 +12,12 @@ const size = computed(() => `${props.pixel}px`);
   <Avatar
     :image="`https://q.trap.jp/api/v3/public/icon/` + name"
     shape="circle"
-    class="icon-avator"
+    :class="[$style['icon-avator'], 'rounded-full']"
   />
 </template>
 
 <style lang="postcss" module>
 .icon-avator {
-  @apply rounded-full;
   width: v-bind(size);
   height: v-bind(size);
 }

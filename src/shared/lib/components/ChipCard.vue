@@ -22,15 +22,12 @@ const colorClasses = {
     'bg-[var(--color-error)]',
     'border-[var(--color-error)]',
     'text-[var(--color-text-white)]',
-    'hover:bg-[#ff6a33]',
-    'hover:border-[#cc3700]',
   ],
   secondary: [
     'bg-[var(--color-secondary)]',
     'border-[var(--color-secondary)]',
     'text-[var(--color-text-secondary)]',
     'hover:bg-[var(--color-secondary-hover)]',
-    'hover:border-[#cbcbcb]',
   ],
 };
 </script>
