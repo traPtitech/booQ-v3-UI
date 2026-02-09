@@ -111,7 +111,7 @@ const model = defineModel<string>();
   width: 50%;
   height: 50%;
   border-radius: 50%;
-  background-color: var(--color-background-light);
+  background-color: var(--color-background);
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
