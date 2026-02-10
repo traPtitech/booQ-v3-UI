@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 import path from 'path';
 import packageJson from './package.json';
 import VuePlugin from '@vitejs/plugin-vue';
-import PurgeIcons from 'vite-plugin-purge-icons';
 import brotli from 'rollup-plugin-brotli';
 import { PluginTrapAuth } from '@traptitech/vite-plugin-trap-auth';
 import autoprefixer from 'autoprefixer';
@@ -37,14 +36,5 @@ export default defineConfig(({ mode }) => ({
   define: {
     __VERSION__: `"${packageJson.version}"`,
   },
-  plugins: [
-    tailwindcss(),
-    VuePlugin(),
-    PurgeIcons(),
-    brotli(),
-    PluginTrapAuth(),
-  ],
-  optimizeDeps: {
-    include: ['@iconify/iconify'],
-  },
+  plugins: [tailwindcss(), VuePlugin(), brotli(), PluginTrapAuth()],
 }));
