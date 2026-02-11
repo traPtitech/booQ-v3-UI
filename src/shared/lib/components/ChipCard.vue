@@ -5,64 +5,55 @@ interface Props {
   color?: 'primary' | 'error' | 'secondary';
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   color: 'primary',
 });
+
+const colorClasses = {
+  primary: [
+    'bg-[var(--color-primary)]',
+    'border-[var(--color-primary)]',
+    'text-[var(--color-text-white)]',
+    'hover:bg-[var(--color-primary-hover)]',
+    'hover:border-[var(--color-border-hover)]',
+    'hover:text-[var(--color-primary)]',
+  ],
+  error: [
+    'bg-[var(--color-error)]',
+    'border-[var(--color-error)]',
+    'text-[var(--color-text-white)]',
+  ],
+  secondary: [
+    'bg-[var(--color-secondary)]',
+    'border-[var(--color-secondary)]',
+    'text-[var(--color-text-secondary)]',
+    'hover:bg-[var(--color-secondary-hover)]',
+  ],
+};
 </script>
 
 <template>
-  <Button class="button-color" :class="`color-${color}`">
-    <span>{{ label }}</span>
-  </Button>
+  <Button
+    :label="props.label"
+    :pt="{
+      root: {
+        class: [
+          'h-10',
+          'px-4',
+          'py-2',
+          'rounded-md',
+          'border-2',
+          'text-base',
+          'font-bold',
+          'leading-normal',
+          'transition-all',
+          'duration-200',
+          'ease-in-out',
+          'active:scale-95',
+          'active:shadow-lg',
+          ...colorClasses[props.color],
+        ],
+      },
+    }"
+  />
 </template>
-
-<style lang="scss" scoped>
-.button-color {
-  border-width: 2px;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: normal;
-  transition: all 0.2s ease;
-
-  &:active {
-    transform: scale(0.95);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-    border-color: $color-border-hover;
-  }
-
-  &.color-primary {
-    background-color: $color-primary;
-    border-color: $color-primary;
-    color: $color-text-white;
-
-    &:hover {
-      background-color: $color-primary-hover;
-      border-color: $color-border-hover;
-      color: $color-primary;
-    }
-  }
-
-  &.color-error {
-    background-color: $color-error;
-    border-color: $color-error;
-    color: $color-text-white;
-
-    &:hover {
-      background-color: lighten($color-error, 10%);
-      border-color: darken($color-error, 10%);
-    }
-  }
-
-  &.color-secondary {
-    background-color: $color-secondary;
-    border-color: $color-secondary;
-    color: $color-text-secondary; // 文字色
-
-    &:hover {
-      background-color: $color-secondary-hover;
-      border-color: darken($color-secondary, 10%);
-      // 必要に応じてホバー時の文字色も指定
-    }
-  }
-}
-</style>

@@ -22,7 +22,6 @@ module.exports = {
       'error',
       {
         script: { lang: 'ts' },
-        style: { lang: 'scss' },
       },
     ],
     'vue/component-api-style': ['error', ['script-setup']],
@@ -36,21 +35,18 @@ module.exports = {
   },
   overrides: [
     {
-      // 直下のファイル
+      files: ['.eslintrc.cjs'],
+      env: { node: true },
+    },
+    {
       files: ['*.{js,mjs}'],
       excludedFiles: ['*/**/*.{js,mjs}'],
-      env: {
-        node: true,
-      },
-
+      env: { node: true },
       rules: { '@typescript-eslint/no-var-requires': 'off' },
     },
     {
       files: ['*src/apis/openapi.ts'],
-      env: {
-        node: true,
-      },
-
+      env: { node: true },
       rules: { '@typescript-eslint/no-explicit-any': 'off' },
     },
   ],

@@ -13,6 +13,6 @@ import ServiceLogo from '@/shared/lib/components/ServiceIcon.vue';
   align-items: center;
   font-size: 20px;
   font-weight: bold;
-  color: $color-primary;
+  color: var(--color-primary);
 }
 </style>
