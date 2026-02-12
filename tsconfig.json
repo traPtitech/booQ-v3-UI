@@ -17,20 +17,12 @@
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable"
-    ],
+    "lib": ["esnext", "dom", "dom.iterable"],
     "skipLibCheck": true,
     "noEmit": true,
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "/@/*": [
-        "src/*"
-      ],
+      "@/*": ["src/*"],
+      "/@/*": ["src/*"],
       "@primeuix/themes/aura": [
         "./node_modules/@primeuix/themes/dist/aura/index.d.ts"
       ]
@@ -40,10 +32,5 @@
   "vueCompilerOptions": {
     "strictTemplates": true
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }
