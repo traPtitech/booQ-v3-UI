@@ -6,7 +6,7 @@
       <div :class="$style.itemC">C</div>
     </div>
   </div>
-  <radio-card
+  <RadioCard
     title="選択肢"
     content="選択肢選択肢選択肢選択肢選択肢選択肢選択肢選択肢"
     name="a"
