@@ -2,6 +2,7 @@ import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import pluginVue from 'eslint-plugin-vue';
 import eslintConfigPrettier from 'eslint-config-prettier';
+import vueParser from 'vue-eslint-parser';
 
 export default tseslint.config(
   {
@@ -14,8 +15,9 @@ export default tseslint.config(
   {
     files: ['**/*.vue'],
     languageOptions: {
+      parser: vueParser,
       parserOptions: {
-        parser: typescript - eslint.perser,
+        parser: tseslint.parser,
       },
     },
   },
@@ -31,6 +33,7 @@ export default tseslint.config(
   {
     files: ['**/*.vue'],
     rules: {
+      'no-useless-assignment': 'off',
       'vue/eqeqeq': 'error',
       'vue/require-default-prop': 'off',
       'vue/block-lang': ['error', { script: { lang: 'ts' } }],
