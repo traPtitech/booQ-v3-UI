@@ -15,6 +15,11 @@ const routes: RouteRecordRaw[] = [
     name: 'register',
     component: registerView,
   },
+  {
+    path: '/request',
+    name: 'request',
+    component: () => import('@/pages/RequestView.vue'),
+  },
 ];
 
 export default createRouter({
