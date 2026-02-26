@@ -22,7 +22,7 @@ defineProps<{
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .background {
   display: inline flex;
   height: 32px;

@@ -18,7 +18,7 @@
 import RadioCard from '@/shared/components/RadioCard.vue';
 </script>
 
-<style lang="scss" module>
+<style module>
 .wrapper {
   display: flex;
   justify-content: center;

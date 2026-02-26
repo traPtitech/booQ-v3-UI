@@ -52,7 +52,7 @@ const lendingItems = [
 ];
 </script>
 
-<style lang="scss" module>
+<style module>
 .container {
   max-width: 1200px;
   margin: 0 auto;
