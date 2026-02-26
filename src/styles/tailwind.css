@@ -29,6 +29,39 @@
   --color-background: #ffffff;
   --color-background-dim: #2b2b2baa;
 
+  /* hover/active states from ChipButton (color-mix) */
+  --color-container-secondary-hover: color-mix(
+    in srgb,
+    var(--color-container-secondary),
+    white 8%
+  );
+  --color-container-secondary-active: color-mix(
+    in srgb,
+    var(--color-container-secondary),
+    black 8%
+  );
+  --color-container-primary-active: color-mix(
+    in srgb,
+    var(--color-container-primary),
+    black 5%
+  );
+  --color-secondary-active: color-mix(
+    in srgb,
+    var(--color-secondary),
+    black 5%
+  );
+  --color-error-container: color-mix(in srgb, var(--color-error), white 35%);
+  --color-error-container-hover: color-mix(
+    in srgb,
+    var(--color-error),
+    white 30%
+  );
+  --color-error-container-active: color-mix(
+    in srgb,
+    var(--color-error),
+    white 25%
+  );
+
   --p-primary-50: #eef7ee;
   --p-primary-100: #dcefdd;
   --p-primary-200: #b9dfbb;
