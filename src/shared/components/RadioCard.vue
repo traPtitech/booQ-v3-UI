@@ -30,7 +30,7 @@ const props = defineProps<{
 const model = defineModel<string>();
 </script>
 
-<style lang="scss" module>
+<style module>
 .container {
   box-shadow: inset 0 0 0 1px var(--color-secondary);
   border-radius: 4px;

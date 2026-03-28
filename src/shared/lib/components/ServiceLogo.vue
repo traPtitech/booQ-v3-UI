@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import ServiceLogo from '@/shared/lib/components/ServiceIcon.vue';
 </script>
-<style lang="scss" scoped>
+<style scoped>
 .content {
   display: flex;
   align-items: center;

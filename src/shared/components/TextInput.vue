@@ -22,9 +22,9 @@ defineProps<{
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .background {
-  display: inline flex;
+  display: inline-flex;
   height: 32px;
   align-items: center;
   border: 1px solid var(--color-border);
