@@ -9,7 +9,7 @@ const props = withDefaults(defineProps<Props>(), {
   color: 'primary',
 });
 
-defineEmits<{
+const emit = defineEmits<{
   click: [e: MouseEvent];
 }>();
 
@@ -39,6 +39,7 @@ const colorClasses = {
 <template>
   <Button
     :label="props.label"
+    @click="(e: MouseEvent) => emit('click', e)"
     :pt="{
       root: {
         class: [

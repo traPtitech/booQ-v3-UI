@@ -2,7 +2,6 @@ import type { RouteRecordRaw } from 'vue-router';
 import { createRouter, createWebHistory } from 'vue-router';
 import RegisterView from '@/pages/registerView.vue';
 import ReturnCheck from '@/pages/ReturnCheck.vue';
-import ReturnCheckOK from '@/pages/ReturnCheckOK.vue';
 export const routerHistory = createWebHistory();
 
 const routes: RouteRecordRaw[] = [
@@ -20,12 +19,6 @@ const routes: RouteRecordRaw[] = [
     path: '/return-check/:userName/:itemId',
     name: 'return-check',
     component: ReturnCheck,
-    props: true,
-  },
-  {
-    path: '/return-check/ok',
-    name: 'return-check-ok',
-    component: ReturnCheckOK,
   },
 ];
 
