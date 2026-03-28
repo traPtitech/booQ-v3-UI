@@ -9,6 +9,10 @@ const props = withDefaults(defineProps<Props>(), {
   color: 'primary',
 });
 
+defineEmits<{
+  click: [e: MouseEvent];
+}>();
+
 const colorClasses = {
   primary: [
     'bg-[var(--color-primary)]',
