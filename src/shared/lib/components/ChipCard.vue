@@ -39,7 +39,6 @@ const colorClasses = {
 <template>
   <Button
     :label="props.label"
-    @click="(e: MouseEvent) => emit('click', e)"
     :pt="{
       root: {
         class: [
@@ -60,5 +59,6 @@ const colorClasses = {
         ],
       },
     }"
+    @click="(e: MouseEvent) => emit('click', e)"
   />
 </template>
