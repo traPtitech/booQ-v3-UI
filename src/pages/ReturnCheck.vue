@@ -8,7 +8,11 @@
           <img :src="returnSvg" alt="" :class="$style.svgImage" />
         </div>
         <div :class="$style.container">
-          <Skeleton width="6rem" height="1.2rem" style="display: inline-block" />
+          <Skeleton
+            width="6rem"
+            height="1.2rem"
+            style="display: inline-block"
+          />
           さんに「<Skeleton
             width="8rem"
             height="1.2rem"

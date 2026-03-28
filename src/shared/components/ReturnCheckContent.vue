@@ -43,7 +43,9 @@ const handleReturn = () => {
     </template>
     <template v-else>
       <div :class="$style.container">
-        <strong>{{ userName }}</strong> さんに「<strong>{{ productTitle }}</strong
+        <strong>{{ userName }}</strong> さんに「<strong>{{
+          productTitle
+        }}</strong
         >」を返却しようとしています
       </div>
       <div :class="$style.cardContainer">
