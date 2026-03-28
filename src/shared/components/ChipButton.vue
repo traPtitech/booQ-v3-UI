@@ -18,13 +18,13 @@ defineEmits(['action', 'close']);
 type Variant = 'new' | 'primary' | 'secondary' | 'error';
 
 const bgClasses: Record<Variant, string> = {
-  new: 'bg-[var(--color-container-secondary)] border-[var(--color-container-secondary)] hover:bg-[var(--color-container-secondary-hover)] hover:border-[var(--color-container-secondary-hover)] active:bg-[var(--color-container-secondary-active)] active:border-[var(--color-container-secondary-active)]',
+  new: 'bg-[var(--color-container-secondary)] border-[var(--color-container-secondary)] hover:brightness-102 active:brightness-98',
   primary:
-    'bg-[var(--color-container-primary)] border-[var(--color-container-primary)] hover:bg-[var(--color-primary-hover)] hover:border-[var(--color-border-hover)] active:bg-[var(--color-container-primary-active)] active:border-[var(--color-container-primary-active)]',
+    'bg-[var(--color-container-primary)] border-[var(--color-container-primary)] hover:bg-[var(--color-primary-hover)] hover:border-[var(--color-border-hover)] active:brightness-95',
   secondary:
-    'bg-[var(--color-secondary)] border-[var(--color-secondary)] hover:bg-[var(--color-secondary-hover)] hover:border-[var(--color-secondary-hover)] active:bg-[var(--color-secondary-active)] active:border-[var(--color-secondary-active)]',
+    'bg-[var(--color-secondary)] border-[var(--color-secondary)] hover:brightness-105 active:brightness-95',
   error:
-    'bg-[var(--color-error-container)] border-[var(--color-error-container)] hover:bg-[var(--color-error-container-hover)] hover:border-[var(--color-error-container-hover)] active:bg-[var(--color-error-container-active)] active:border-[var(--color-error-container-active)]',
+    'bg-[color-mix(in_srgb,var(--color-error),white_35%)] border-[color-mix(in_srgb,var(--color-error),white_35%)] hover:brightness-95 active:brightness-90',
 };
 
 const textClasses: Record<Variant, string> = {
