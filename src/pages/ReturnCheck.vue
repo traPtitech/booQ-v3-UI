@@ -19,40 +19,10 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
 import MainHeader from '@/shared/lib/components/MainHeader.vue';
 import Skeleton from 'primevue/skeleton';
 import ReturnCheckContent from '@/shared/components/ReturnCheckContent.vue';
 import returnSvg from '/return-icon.svg';
-
-const router = useRouter();
-
-const userName = ref<string>('');
-const productTitle = ref<string>('');
-
-async function fetchUserDataAndProduct() {
-  try {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    userName.value = 'o_ER4';
-    productTitle.value = 'Vue.js入門';
-  } catch (error) {
-    userName.value = 'ユーザー名を取得できませんでした';
-    productTitle.value = '物品名を取得できませんでした';
-  }
-}
-
-onMounted(() => {
-  fetchUserDataAndProduct();
-});
-
-const handleCancel = () => {
-  router.back();
-};
-
-const handleReturn = () => {
-  router.push('/return-check/ok');
-};
 </script>
 
 <style lang="scss" module>

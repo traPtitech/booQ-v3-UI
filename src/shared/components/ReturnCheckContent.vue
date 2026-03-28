@@ -1,13 +1,21 @@
 <script lang="ts" setup>
 import ChipCard from '@/shared/lib/components/ChipCard.vue';
-import { useRouter } from 'vue-router';
+import { getItem } from '@/apis/client';
+import { useRoute, useRouter } from 'vue-router';
 
+const route = useRoute();
 const router = useRouter();
 
-const { userName, productTitle } = await fetchUserDataAndProduct();
+const userName = route.params['userName'] as string;
+const itemId = Number(route.params['itemId']);
 
-async function fetchUserDataAndProduct() {
-  return { userName: 'o_ER4', productTitle: 'Vue.js入門' };
+let productTitle: string;
+try {
+  const { data } = await getItem({ itemId });
+  productTitle = data.name;
+} catch {
+  // TODO: バックエンド接続後に削除
+  productTitle = 'ダミー物品名';
 }
 
 const handleCancel = () => router.back();

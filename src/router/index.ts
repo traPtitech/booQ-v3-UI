@@ -17,7 +17,7 @@ const routes: RouteRecordRaw[] = [
     component: RegisterView,
   },
   {
-    path: '/return-check/:userName/:productTitle',
+    path: '/return-check/:userName/:itemId',
     name: 'return-check',
     component: ReturnCheck,
     props: true,
@@ -26,7 +26,7 @@ const routes: RouteRecordRaw[] = [
     path: '/return-check/ok',
     name: 'return-check-ok',
     component: ReturnCheckOK,
-  }
+  },
 ];
 
 export default createRouter({

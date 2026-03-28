@@ -1,7 +1,7 @@
 <template>
   <div><MainHeader></MainHeader></div>
   <div :class="$style['svgContainer']">
-    <img :src="returnSvg" alt="QR Code" :class="$style['svgImage']" />
+    <img :src="returnSvg" alt="" :class="$style['svgImage']" />
   </div>
   <div>返却されました</div>
 </template>
