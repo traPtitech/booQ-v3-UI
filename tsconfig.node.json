@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "composite": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      // moduleResolution が bundler (かつ type が module) の場合には
+      // package.json の exports.types フィールドのみを参照し、
+      // types フィールドは参照しないため、個別に指定する必要がある。
+      "postcss-normalize": ["./node_modules/postcss-normalize/index.d.ts"]
+    }
+  },
+  "include": ["vite.config.ts", "src/types/*.ts"]
+}

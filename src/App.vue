@@ -12,7 +12,7 @@
 import { RouterView } from 'vue-router';
 </script>
 
-<style lang="scss" module>
+<style module>
 .container {
   display: flex;
   flex-direction: column;
@@ -34,10 +34,6 @@ import { RouterView } from 'vue-router';
 
 .content {
   flex: 1;
-
-  overflow: {
-    x: hidden;
-    y: scroll;
-  }
+  overflow: hidden scroll;
 }
 </style>

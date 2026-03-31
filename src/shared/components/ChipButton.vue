@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, defineEmits, computed } from 'vue';
+import { computed } from 'vue';
 import Button from 'primevue/button';
 import IconClose from './IconClose.vue';
 import IconPlus from './IconPlus.vue';
@@ -15,128 +15,50 @@ const props = withDefaults(defineProps<Props>(), {
 });
 defineEmits(['action', 'close']);
 
-const chipStyle = computed(() => {
-  return props.type === 'new'
-    ? ['button-newchip']
-    : ['button-chip', `button-${props.colorType ?? 'primary'}`];
-});
+type Variant = 'new' | 'primary' | 'secondary' | 'error';
+
+const bgClasses: Record<Variant, string> = {
+  new: 'bg-[var(--color-container-secondary)] border-[var(--color-container-secondary)] hover:brightness-102 active:brightness-98',
+  primary:
+    'bg-[var(--color-container-primary)] border-[var(--color-container-primary)] hover:bg-[var(--color-primary-hover)] hover:border-[var(--color-border-hover)] active:brightness-95',
+  secondary:
+    'bg-[var(--color-secondary)] border-[var(--color-secondary)] hover:brightness-105 active:brightness-95',
+  error:
+    'bg-[color-mix(in_srgb,var(--color-error),white_35%)] border-[color-mix(in_srgb,var(--color-error),white_35%)] hover:brightness-95 active:brightness-90',
+};
+
+const textClasses: Record<Variant, string> = {
+  new: 'text-[var(--color-text-dimmed)]',
+  primary: 'text-[var(--color-primary)]',
+  secondary: 'text-[var(--color-text-secondary)]',
+  error: 'text-[var(--color-error)]',
+};
+
+const variant = computed<Variant>(() =>
+  props.type === 'new' ? 'new' : (props.colorType ?? 'primary'),
+);
 </script>
 
 <template>
-  <div class="background" :class="chipStyle">
-    <Button class="button" :class="chipStyle" @click="$emit('action')">
-      <div class="button-content">
+  <div
+    class="inline-flex gap-2 h-8 rounded-2xl px-3 py-1 border border-transparent"
+    :class="[bgClasses[variant], textClasses[variant]]"
+  >
+    <Button
+      class="p-0 text-base font-bold leading-normal bg-transparent! border-0! shadow-none! text-inherit"
+      @click="$emit('action')"
+    >
+      <div class="flex gap-2 items-center">
         <span>{{ props.label }}</span>
         <IconPlus v-if="props.type === 'new'" />
       </div>
     </Button>
     <Button
       v-if="props.type === 'show-close'"
-      class="button"
-      :class="chipStyle"
+      class="p-0 bg-transparent! border-0! shadow-none! text-inherit"
       @click="$emit('close')"
     >
       <IconClose />
     </Button>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.background {
-  display: inline-flex;
-  gap: 8px;
-  height: 32px;
-  border-radius: 16px;
-  padding: 4px 12px;
-  border: 1px solid transparent;
-
-  &.button-newchip {
-    background-color: $color-container-secondary;
-    border-color: $color-container-secondary;
-
-    &:hover {
-      background-color: lighten($color-container-secondary, 8%);
-      border-color: lighten($color-container-secondary, 8%);
-    }
-    &:active {
-      background-color: darken($color-container-secondary, 8%);
-      border-color: darken($color-container-secondary, 8%);
-    }
-  }
-
-  &.button-chip {
-    &.button-primary {
-      background-color: $color-container-primary;
-      border-color: $color-container-primary;
-
-      &:hover {
-        background-color: $color-primary-hover;
-        border-color: $color-border-hover;
-      }
-      &:active {
-        background-color: darken($color-container-primary, 5%);
-        border-color: darken($color-container-primary, 5%);
-      }
-    }
-    &.button-secondary {
-      background-color: $color-secondary;
-      border-color: $color-secondary;
-
-      &:hover {
-        background-color: lighten($color-secondary, 5%);
-        border-color: lighten($color-secondary, 5%);
-      }
-      &:active {
-        background-color: darken($color-secondary, 5%);
-        border-color: darken($color-secondary, 5%);
-      }
-    }
-    &.button-error {
-      background-color: lighten($color-error, 35%);
-      border-color: lighten($color-error, 35%);
-
-      &:hover {
-        background-color: lighten($color-error, 30%);
-        border-color: lighten($color-error, 30%);
-      }
-      &:active {
-        background-color: lighten($color-error, 25%);
-        border-color: lighten($color-error, 25%);
-      }
-    }
-  }
-}
-
-.button {
-  padding: 0;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: normal;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  color: inherit;
-
-  &.button-newchip {
-    color: $color-text-dimmed;
-  }
-
-  &.button-chip {
-    &.button-primary {
-      color: $color-primary;
-    }
-    &.button-secondary {
-      color: $color-text-secondary;
-    }
-    &.button-error {
-      color: $color-error;
-    }
-  }
-}
-
-.button-content {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-</style>

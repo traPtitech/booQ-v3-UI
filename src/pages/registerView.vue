@@ -6,7 +6,7 @@
       <div :class="$style.itemC">C</div>
     </div>
   </div>
-  <radio-card
+  <RadioCard
     title="選択肢"
     content="選択肢選択肢選択肢選択肢選択肢選択肢選択肢選択肢"
     name="a"
@@ -18,7 +18,7 @@
 import RadioCard from '@/shared/components/RadioCard.vue';
 </script>
 
-<style lang="scss" module>
+<style module>
 .wrapper {
   display: flex;
   justify-content: center;

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
-
 defineProps<{
   placeholder?: string;
   size: 'sm' | 'md' | 'lg';
@@ -24,18 +22,18 @@ defineProps<{
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .background {
-  display: inline flex;
+  display: inline-flex;
   height: 32px;
   align-items: center;
-  border: 1px solid $color-border;
+  border: 1px solid var(--color-border);
   border-radius: 4px;
 }
 
 .background:focus-within {
   outline: 2px solid;
-  outline-color: $color-primary;
+  outline-color: var(--color-primary);
 }
 .text-input {
   height: 32px;
@@ -47,7 +45,7 @@ defineProps<{
   background-color: transparent;
 }
 .text-input::placeholder {
-  color: $color-text-placeholder;
+  color: var(--color-text-placeholder);
 }
 .side-icon {
   display: flex;
