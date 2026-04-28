@@ -6,6 +6,8 @@ import { useRoute, useRouter } from 'vue-router';
 import returnSvg from '/return-icon.svg';
 import returnOkSvg from '/return-ok.svg';
 
+await new Promise((resolve) => setTimeout(resolve, 1500));
+
 const route = useRoute();
 const router = useRouter();
 

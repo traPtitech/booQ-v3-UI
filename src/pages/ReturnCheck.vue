@@ -1,3 +1,10 @@
+<script lang="ts" setup>
+import MainHeader from '@/shared/lib/components/MainHeader.vue';
+import Skeleton from 'primevue/skeleton';
+import ReturnCheckContent from '@/shared/components/ReturnCheckContent.vue';
+import returnSvg from '/return-icon.svg';
+</script>
+
 <template>
   <div><MainHeader></MainHeader></div>
   <Suspense>
@@ -9,27 +16,16 @@
         </div>
         <div :class="$style.container">
           <Skeleton
-            width="6rem"
-            height="1.2rem"
-            style="display: inline-block"
           />
-          さんに「<Skeleton
-            width="8rem"
-            height="1.2rem"
-            style="display: inline-block"
-          />」を返却しようとしています
+          さんに「
+          <Skeleton
+          />
+          」を返却しようとしています
         </div>
       </div>
     </template>
   </Suspense>
 </template>
-
-<script lang="ts" setup>
-import MainHeader from '@/shared/lib/components/MainHeader.vue';
-import Skeleton from 'primevue/skeleton';
-import ReturnCheckContent from '@/shared/components/ReturnCheckContent.vue';
-import returnSvg from '/return-icon.svg';
-</script>
 
 <style lang="scss" module>
 .container {
