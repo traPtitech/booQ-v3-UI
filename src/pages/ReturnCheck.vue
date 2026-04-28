@@ -2,7 +2,7 @@
 import MainHeader from '@/shared/lib/components/MainHeader.vue';
 import Skeleton from 'primevue/skeleton';
 import ReturnCheckContent from '@/shared/components/ReturnCheckContent.vue';
-import returnSvg from '/return-icon.svg';
+import returnImg from '/return-check.png';
 </script>
 
 <template>
@@ -11,8 +11,8 @@ import returnSvg from '/return-icon.svg';
     <ReturnCheckContent />
     <template #fallback>
       <div>
-        <div :class="$style.svgContainer">
-          <img :src="returnSvg" alt="" :class="$style.svgImage" />
+        <div :class="$style.imgContainer">
+          <img :src="returnImg" alt="" :class="$style.imgImage" />
         </div>
         <div :class="$style.container">
           <Skeleton
@@ -37,13 +37,13 @@ import returnSvg from '/return-icon.svg';
   font-size: 1.2rem;
 }
 
-.svgContainer {
+.imgContainer {
   display: flex;
   justify-content: center;
   margin: 40px 0;
 }
 
-.svgImage {
+.imgImage {
   max-width: 150px;
   height: auto;
 }

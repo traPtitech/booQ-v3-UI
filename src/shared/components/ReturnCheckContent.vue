@@ -3,8 +3,8 @@ import { ref } from 'vue';
 import ChipCard from '@/shared/lib/components/ChipCard.vue';
 import { getItem } from '@/apis/client';
 import { useRoute, useRouter } from 'vue-router';
-import returnSvg from '/return-icon.svg';
-import returnOkSvg from '/return-ok.svg';
+import returnImg from '/return-check.png';
+import returnOkImg from '/return-ok.png';
 
 await new Promise((resolve) => setTimeout(resolve, 1500));
 
@@ -33,11 +33,11 @@ const handleReturn = () => {
 
 <template>
   <div>
-    <div :class="$style.svgContainer">
+    <div :class="$style.imgContainer">
       <img
-        :src="returned ? returnOkSvg : returnSvg"
+        :src="returned ? returnOkImg : returnImg"
         alt=""
-        :class="$style.svgImage"
+        :class="$style.imgImage"
       />
     </div>
     <template v-if="returned">
@@ -67,13 +67,13 @@ const handleReturn = () => {
   font-size: 1.2rem;
 }
 
-.svgContainer {
+.imgContainer {
   display: flex;
   justify-content: center;
   margin: 40px 0;
 }
 
-.svgImage {
+.imgImage {
   max-width: 150px;
   height: auto;
 }
