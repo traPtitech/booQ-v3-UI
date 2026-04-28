@@ -15,11 +15,9 @@ import returnImg from '/return-check.png';
           <img :src="returnImg" alt="" :class="$style.imgImage" />
         </div>
         <div :class="$style.container">
-          <Skeleton
-          />
+          <Skeleton />
           さんに「
-          <Skeleton
-          />
+          <Skeleton />
           」を返却しようとしています
         </div>
       </div>
