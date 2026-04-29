@@ -1,5 +1,7 @@
 <template>
-  <div class="flex items-center justify-between px-8 py-4 border-b border-(--color-secondary)">
+  <div
+    class="flex items-center justify-between px-8 py-4 border-b border-(--color-secondary)"
+  >
     <div class="mr-auto">
       <AppLogo />
     </div>
