@@ -10,11 +10,15 @@ import './styles/tailwind.css';
 
 const booQPreset = definePreset(Aura, {
   semantic: {
-    primary: Object.assign({}, palette('#5cb860'), {
-      50: '#eef7ee',
-      100: '#dcefdd',
-      500: '#5cb860',
-    }),
+    primary: palette('#5cb860'),
+    colorScheme: {
+      light: {
+        primary: {
+          color: '{primary.500}',
+          inverseColor: '#ffffff',
+        },
+      },
+    },
   },
 });
 
@@ -25,8 +29,7 @@ app.use(PrimeVue, {
     preset: booQPreset,
     options: {
       prefix: 'p',
-      darkModeSelector: 'system',
-      cssLayer: { name: 'primevue' },
+      darkModeSelector: false,
     },
   },
 });
