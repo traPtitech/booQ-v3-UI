@@ -15,11 +15,6 @@ const routes: RouteRecordRaw[] = [
     name: 'register',
     component: registerView,
   },
-  {
-    path: '/sample',
-    name: 'sample',
-    component: () => import('@/pages/SamplePage.vue'),
-  },
 ];
 
 export default createRouter({
