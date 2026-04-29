@@ -16,7 +16,7 @@ const size = computed(() => `${props.pixel}px`);
   />
 </template>
 
-<style lang="postcss" module>
+<style module>
 .icon-avator {
   width: v-bind(size);
   height: v-bind(size);
