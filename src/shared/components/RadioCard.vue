@@ -58,7 +58,7 @@ const model = defineModel<string>();
 }
 
 .title {
-  color: var(--color-text-primary);
+  color: var(--color-text);
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -92,7 +92,7 @@ const model = defineModel<string>();
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-color: var(--color-container-secondary);
+  background-color: var(--color-secondary-container);
   border: 2px solid var(--color-secondary);
   position: absolute;
   top: 50%;
