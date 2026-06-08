@@ -23,8 +23,13 @@ const props = withDefaults(
 <template>
   <div
     class="background"
-    :class="[`size-${props.size}`, { 'is-invalid': props.invalid, 'is-disabled': props.disabled }]"
-    :style="props.borderColor ? { '--local-border': props.borderColor } : undefined"
+    :class="[
+      `size-${props.size}`,
+      { 'is-invalid': props.invalid, 'is-disabled': props.disabled },
+    ]"
+    :style="
+      props.borderColor ? { '--local-border': props.borderColor } : undefined
+    "
   >
     <div v-if="$slots['left']" class="side-icon">
       <slot name="left" />
@@ -52,9 +57,15 @@ const props = withDefaults(
   border-radius: 4px;
 }
 
-.background.size-sm { height: 24px; }
-.background.size-md { height: 32px; }
-.background.size-lg { height: 40px; }
+.background.size-sm {
+  height: 24px;
+}
+.background.size-md {
+  height: 32px;
+}
+.background.size-lg {
+  height: 40px;
+}
 
 .background:focus-within {
   outline: 2px solid var(--color-primary);
@@ -77,9 +88,18 @@ const props = withDefaults(
   background-color: transparent;
 }
 
-.text-input--sm { padding: 2px 8px; font-size: 14px; }
-.text-input--md { padding: 8px 8px; font-size: 16px; }
-.text-input--lg { padding: 12px 8px; font-size: 18px; }
+.text-input--sm {
+  padding: 2px 8px;
+  font-size: 14px;
+}
+.text-input--md {
+  padding: 8px 8px;
+  font-size: 16px;
+}
+.text-input--lg {
+  padding: 12px 8px;
+  font-size: 18px;
+}
 
 .text-input::placeholder {
   color: var(--color-text-placeholder);
