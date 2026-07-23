@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Chip from 'primevue/chip';
-
+import 'primevue/resources/themes/saga-blue/theme.css';
 defineProps<{
   label: string;
 }>();
