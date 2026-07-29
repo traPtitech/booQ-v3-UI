@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import Button from 'primevue/button';
 import IconClose from './IconClose.vue';
 import IconPlus from './IconPlus.vue';
 
@@ -13,26 +12,12 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   colorType: 'primary',
 });
-defineEmits(['action', 'close']);
+const emit = defineEmits<{
+  action: [];
+  close: [];
+}>();
 
 type Variant = 'new' | 'primary' | 'secondary' | 'error';
-
-const bgClasses: Record<Variant, string> = {
-  new: 'bg-[var(--color-container-secondary)] border-[var(--color-container-secondary)] hover:brightness-102 active:brightness-98',
-  primary:
-    'bg-[var(--color-container-primary)] border-[var(--color-container-primary)] hover:bg-[var(--color-primary-hover)] hover:border-[var(--color-border-hover)] active:brightness-95',
-  secondary:
-    'bg-[var(--color-secondary)] border-[var(--color-secondary)] hover:brightness-105 active:brightness-95',
-  error:
-    'bg-[color-mix(in_srgb,var(--color-error),white_35%)] border-[color-mix(in_srgb,var(--color-error),white_35%)] hover:brightness-95 active:brightness-90',
-};
-
-const textClasses: Record<Variant, string> = {
-  new: 'text-[var(--color-text-dimmed)]',
-  primary: 'text-[var(--color-primary)]',
-  secondary: 'text-[var(--color-text-secondary)]',
-  error: 'text-[var(--color-error)]',
-};
 
 const variant = computed<Variant>(() =>
   props.type === 'new' ? 'new' : (props.colorType ?? 'primary'),
@@ -40,25 +25,92 @@ const variant = computed<Variant>(() =>
 </script>
 
 <template>
-  <div
-    class="inline-flex gap-2 h-8 rounded-2xl px-3 py-1 border border-transparent"
-    :class="[bgClasses[variant], textClasses[variant]]"
-  >
-    <Button
-      class="p-0 text-base font-bold leading-normal bg-transparent! border-0! shadow-none! text-inherit"
-      @click="$emit('action')"
-    >
-      <div class="flex gap-2 items-center">
-        <span>{{ props.label }}</span>
-        <IconPlus v-if="props.type === 'new'" />
-      </div>
-    </Button>
-    <Button
+  <div :class="[$style.chip, $style[variant]]">
+    <button type="button" :class="$style.action" @click="emit('action')">
+      <span>{{ props.label }}</span>
+      <IconPlus v-if="props.type === 'new'" />
+    </button>
+    <button
       v-if="props.type === 'show-close'"
-      class="p-0 bg-transparent! border-0! shadow-none! text-inherit"
-      @click="$emit('close')"
+      type="button"
+      :class="$style.close"
+      :aria-label="`${props.label}を削除`"
+      @click="emit('close')"
     >
       <IconClose />
-    </Button>
+    </button>
   </div>
 </template>
+
+<style module>
+.chip {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 4px 12px;
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+
+.action,
+.close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+.action {
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.close {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.action:focus-visible,
+.close:focus-visible {
+  border-radius: 2px;
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.primary {
+  color: var(--color-primary);
+  background: var(--color-primary-container);
+}
+
+.new,
+.secondary {
+  color: var(--color-text-dimmed);
+  background: var(--color-secondary-container);
+}
+
+.primary:hover,
+.new:hover,
+.secondary:hover {
+  background: var(--color-primary-hover);
+}
+
+.error {
+  color: var(--color-error);
+  background: color-mix(in srgb, var(--color-error), white 82%);
+}
+
+.error:hover {
+  background: var(--color-error-hover);
+}
+</style>

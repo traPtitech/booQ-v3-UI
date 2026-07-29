@@ -1,48 +1,21 @@
 <script setup lang="ts">
-import InputText from 'primevue/inputtext';
-
-const model = defineModel<string>();
-
-const props = withDefaults(
+withDefaults(
   defineProps<{
     placeholder?: string;
-    type?: string;
-    size?: 'sm' | 'md' | 'lg';
-    disabled?: boolean;
-    readonly?: boolean;
-    invalid?: boolean;
-    borderColor?: string;
+    size?: 'md';
   }>(),
   {
-    type: 'text',
     size: 'md',
   },
 );
 </script>
 
 <template>
-  <div
-    class="background"
-    :class="[
-      `size-${props.size}`,
-      { 'is-invalid': props.invalid, 'is-disabled': props.disabled },
-    ]"
-    :style="
-      props.borderColor ? { '--local-border': props.borderColor } : undefined
-    "
-  >
+  <div class="background">
     <div v-if="$slots['left']" class="side-icon">
       <slot name="left" />
     </div>
-    <InputText
-      v-model="model"
-      :type="props.type"
-      :placeholder="props.placeholder"
-      :disabled="props.disabled"
-      :readonly="props.readonly"
-      :invalid="props.invalid"
-      :pt="{ root: { class: ['text-input', `text-input--${props.size}`] } }"
-    />
+    <input type="text" class="text-input" :placeholder="placeholder" />
     <div v-if="$slots['right']" class="side-icon">
       <slot name="right" />
     </div>
@@ -52,63 +25,50 @@ const props = withDefaults(
 <style scoped>
 .background {
   display: inline-flex;
+  width: 306px;
   align-items: center;
-  border: 1px solid var(--local-border, var(--color-border));
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--color-border);
   border-radius: 4px;
-}
-
-.background.size-sm {
-  height: 24px;
-}
-.background.size-md {
-  height: 32px;
-}
-.background.size-lg {
-  height: 40px;
+  background: var(--color-background);
+  box-sizing: border-box;
 }
 
 .background:focus-within {
-  outline: 2px solid var(--color-primary);
-}
-
-.background.is-invalid {
-  border-color: var(--color-error);
-}
-
-.background.is-disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 1px var(--color-primary);
 }
 
 .text-input {
-  height: 100%;
+  min-width: 0;
+  flex: 1;
+  padding: 0;
+  appearance: none;
   border: none;
   outline: none;
-  font-weight: 500;
+  box-shadow: none;
+  color: var(--color-text);
   background-color: transparent;
-}
-
-.text-input--sm {
-  padding: 2px 8px;
-  font-size: 14px;
-}
-.text-input--md {
-  padding: 8px 8px;
+  font: inherit;
   font-size: 16px;
-}
-.text-input--lg {
-  padding: 12px 8px;
-  font-size: 18px;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .text-input::placeholder {
   color: var(--color-text-placeholder);
+  opacity: 1;
 }
 
 .side-icon {
   display: flex;
-  padding: 0 4px;
-  height: 100%;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
   align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 </style>

@@ -15,6 +15,11 @@ const routes: RouteRecordRaw[] = [
     name: 'register',
     component: registerView,
   },
+  {
+    path: '/playground',
+    name: 'playground',
+    component: () => import('@/pages/Playground.vue'),
+  },
 ];
 
 export default createRouter({

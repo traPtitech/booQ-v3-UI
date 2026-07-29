@@ -20,5 +20,13 @@ const size = computed(() => `${props.pixel}px`);
 .icon-avatar {
   width: v-bind(size);
   height: v-bind(size);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.icon-avatar :global(img) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 </style>
