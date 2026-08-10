@@ -535,8 +535,9 @@ watch(selectedRadio, (value) => {
 }
 
 .iconSample {
-  display: grid;
-  justify-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 8px;
   color: var(--color-text-dimmed);
   font-size: 11px;

@@ -35,7 +35,6 @@ const model = defineModel<string>();
 .label {
   position: relative;
   display: block;
-  width: 351px;
   max-width: 100%;
 }
 
