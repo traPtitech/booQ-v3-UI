@@ -1,13 +1,26 @@
 <script setup lang="ts">
-withDefaults(
+import InputText from 'primevue/inputtext';
+
+defineOptions({
+  inheritAttrs: false,
+});
+
+const props = withDefaults(
   defineProps<{
     placeholder?: string;
     size?: 'md';
+    inputAriaLabel?: string;
   }>(),
   {
     size: 'md',
   },
 );
+
+const emit = defineEmits<{
+  focus: [event: Event];
+}>();
+
+const model = defineModel<string | undefined>({ default: '' });
 </script>
 
 <template>
@@ -15,7 +28,15 @@ withDefaults(
     <div v-if="$slots['left']" class="side-icon">
       <slot name="left" />
     </div>
-    <input type="text" class="text-input" :placeholder="placeholder" />
+    <InputText
+      v-model="model"
+      v-bind="$attrs"
+      unstyled
+      class="text-input"
+      :placeholder="props.placeholder"
+      :aria-label="props.inputAriaLabel"
+      @focus="emit('focus', $event)"
+    />
     <div v-if="$slots['right']" class="side-icon">
       <slot name="right" />
     </div>

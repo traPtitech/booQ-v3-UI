@@ -33,6 +33,7 @@ const model = defineModel<string>();
 
 <style module>
 .label {
+  position: relative;
   display: block;
   width: 351px;
   max-width: 100%;
@@ -85,6 +86,8 @@ const model = defineModel<string>();
 
 .input {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 1px;
   height: 1px;
   overflow: hidden;

@@ -108,26 +108,29 @@
         </div>
         <div :class="$style.preview">
           <div :class="$style.inputGrid">
-            <label
+            <div
               v-for="inputSize in inputSizes"
               :key="inputSize"
               :class="$style.field"
-              @focusin="recordEvent(`TextInput / ${inputSize} にフォーカス`)"
-              @input="handleTextInput($event, inputSize)"
             >
               <span :class="$style.previewLabel">size: {{ inputSize }}</span>
               <TextInput
                 :size="inputSize"
                 :placeholder="`${inputSize} テキストを入力`"
+                :input-aria-label="`${inputSize} サイズのテキスト入力`"
+                @focus="recordEvent(`TextInput / ${inputSize} にフォーカス`)"
+                @update:model-value="handleTextInput($event, inputSize)"
               />
-            </label>
-            <label
-              :class="$style.field"
-              @focusin="recordEvent('TextInput / slots にフォーカス')"
-              @input="handleTextInput($event, 'slots')"
-            >
+            </div>
+            <div :class="$style.field">
               <span :class="$style.previewLabel">with slots</span>
-              <TextInput size="md" placeholder="スロット付き">
+              <TextInput
+                size="md"
+                placeholder="スロット付き"
+                input-aria-label="スロット付きテキスト入力"
+                @focus="recordEvent('TextInput / slots にフォーカス')"
+                @update:model-value="handleTextInput($event, 'slots')"
+              >
                 <template #left>
                   <span :class="$style.inputAffix">Aa</span>
                 </template>
@@ -135,7 +138,7 @@
                   <IconClose />
                 </template>
               </TextInput>
-            </label>
+            </div>
           </div>
           <p :class="$style.liveValue">
             入力値:
@@ -299,13 +302,11 @@ const recordEvent = (message: string) => {
 };
 
 const handleTextInput = (
-  event: Event,
+  value: string | undefined,
   size: (typeof inputSizes)[number] | 'slots',
 ) => {
-  if (!(event.target instanceof HTMLInputElement)) return;
-
-  textInputValue.value = event.target.value;
-  recordEvent(`TextInput / ${size}: "${event.target.value}"`);
+  textInputValue.value = value ?? '';
+  recordEvent(`TextInput / ${size}: "${textInputValue.value}"`);
 };
 
 watch(selectedRadio, (value) => {
