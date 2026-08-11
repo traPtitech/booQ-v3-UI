@@ -1,10 +1,11 @@
 <template>
-  <label>
+  <label :class="$style.label">
     <input
       :class="$style.input"
       type="radio"
       :name="props.name"
       :value="props.value"
+      :checked="model === props.value"
       @change="model = props.value"
     />
     <div :class="$style.container">
@@ -31,14 +32,22 @@ const model = defineModel<string>();
 </script>
 
 <style module>
+.label {
+  position: relative;
+  display: block;
+  max-width: 100%;
+}
+
 .container {
-  box-shadow: inset 0 0 0 1px var(--color-secondary);
-  border-radius: 4px;
   display: flex;
   padding: 16px;
+  border-radius: 4px;
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
+  background: var(--color-background);
+  box-shadow: inset 0 0 0 1px var(--color-secondary);
+  box-sizing: border-box;
   cursor: pointer;
 }
 
@@ -53,7 +62,7 @@ const model = defineModel<string>();
 .title_wrapper {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   align-self: stretch;
 }
 
@@ -66,7 +75,6 @@ const model = defineModel<string>();
 }
 
 .content {
-  font-size: 16px;
   text-align: left;
   align-self: stretch;
   color: var(--color-text-dimmed);
@@ -76,28 +84,42 @@ const model = defineModel<string>();
 }
 
 .input {
-  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.input:focus-visible + .container {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 .btn {
-  cursor: pointer;
   position: relative;
   width: 24px;
   height: 24px;
   flex-shrink: 0;
+  cursor: pointer;
 }
 
 .btn::before {
   content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
   width: 100%;
   height: 100%;
   border-radius: 50%;
   background-color: var(--color-secondary-container);
   border: 2px solid var(--color-secondary);
-  position: absolute;
-  top: 50%;
   transform: translate(-50%, -50%);
-  z-index: 10;
   box-sizing: border-box;
 }
 
@@ -108,13 +130,14 @@ const model = defineModel<string>();
 
 .input:checked + .container .title_wrapper .btn::after {
   content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 11;
   width: 50%;
   height: 50%;
   border-radius: 50%;
   background-color: var(--color-background);
-  position: absolute;
-  top: 50%;
   transform: translate(-50%, -50%);
-  z-index: 11;
 }
 </style>

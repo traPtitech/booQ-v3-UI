@@ -7,10 +7,17 @@ const props = defineProps<{
 }>();
 
 const size = computed(() => `${props.pixel}px`);
+const avatarDesignTokens = computed(() => ({
+  root: {
+    width: size.value,
+    height: size.value,
+  },
+}));
 </script>
 <template>
   <Avatar
     :image="`https://q.trap.jp/api/v3/public/icon/` + name"
+    :dt="avatarDesignTokens"
     shape="circle"
     :class="[$style['icon-avatar'], 'rounded-full']"
   />
@@ -18,7 +25,13 @@ const size = computed(() => `${props.pixel}px`);
 
 <style module>
 .icon-avatar {
-  width: v-bind(size);
-  height: v-bind(size);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.icon-avatar :global(img) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 </style>

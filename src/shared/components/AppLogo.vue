@@ -1,6 +1,30 @@
 <template>
-  <div class="flex items-center gap-2 text-xl font-bold text-(--color-primary)">
-    <img src="@/assets/img/logo.svg" alt="booQ logo" class="h-8" />
-    booQ
+  <div :class="$style.logo">
+    <img
+      src="@/assets/img/logo.svg"
+      alt=""
+      aria-hidden="true"
+      :class="$style.icon"
+    />
+    <span>booQ</span>
   </div>
 </template>
+
+<style module>
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-primary);
+  font-size: 20px;
+  font-weight: 800;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.icon {
+  width: 24.825px;
+  height: 32px;
+  flex-shrink: 0;
+}
+</style>
