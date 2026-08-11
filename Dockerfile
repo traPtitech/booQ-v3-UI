@@ -1,18 +1,14 @@
-FROM node:20-alpine as build
-RUN apk add --update --no-cache openjdk11-jre-headless
-WORKDIR /app
+FROM node:24-alpine AS build
+  RUN apk add --update --no-cache openjdk11-jre-headless
+  WORKDIR /app
 
-COPY package*.json ./
-RUN npm install
+  RUN corepack enable pnpm
 
-COPY ./scripts ./scripts
-RUN npm run gen-api
+  COPY package.json pnpm-lock.yaml ./
+  RUN pnpm install --frozen-lockfile
 
-COPY . .
-RUN NODE_ENV=production npm run build
+  COPY ./scripts ./scripts
+  RUN pnpm gen-api
 
-
-FROM caddy:2.4.3-alpine
-EXPOSE 80
-COPY build/Caddyfile /etc/caddy/Caddyfile
-COPY --from=build /app/dist /usr/share/caddy
+  COPY . .
+  RUN NODE_ENV=production pnpm build
