@@ -32,18 +32,20 @@ const handleReturn = () => {
 </script>
 
 <template>
-  <div>
-    <div :class="$style.imgContainer">
-      <img
-        :src="returned ? returnOkImg : returnImg"
-        alt=""
-        :class="$style.imgImage"
-      />
-    </div>
+  <div :class="[$style.content, { [$style.successContent]: returned }]">
     <template v-if="returned">
-      <div :class="$style.container">返却されました</div>
+      <img
+        :src="returnOkImg"
+        alt=""
+        aria-hidden="true"
+        :class="$style.successIcon"
+      />
+      <p :class="$style.successMessage">返却しました</p>
     </template>
     <template v-else>
+      <div :class="$style.imgContainer">
+        <img :src="returnImg" alt="" :class="$style.imgImage" />
+      </div>
       <div :class="$style.container">
         <strong>{{ userName }}</strong> さんに「<strong>{{
           productTitle
@@ -58,6 +60,38 @@ const handleReturn = () => {
   </div>
 </template>
 <style lang="scss" module>
+.content {
+  box-sizing: border-box;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+}
+
+.successContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 32px;
+}
+
+.successIcon {
+  max-width: fit-content;
+  max-height: fit-content;
+  align-self: center;
+  flex-shrink: 0;
+}
+
+.successMessage {
+  margin: 0;
+  color: #000;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: normal;
+  white-space: nowrap;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
