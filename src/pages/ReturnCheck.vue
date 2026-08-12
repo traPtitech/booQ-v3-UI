@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import MainHeader from '@/shared/lib/components/MainHeader.vue';
+import AppHeader from '@/shared/components/AppHeader.vue';
 import Skeleton from 'primevue/skeleton';
 import ReturnCheckContent from '@/shared/components/ReturnCheckContent.vue';
 import returnImg from '/return-check.png';
 </script>
 
 <template>
-  <div><MainHeader></MainHeader></div>
+  <AppHeader />
   <Suspense>
     <ReturnCheckContent />
     <template #fallback>

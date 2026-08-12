@@ -51,7 +51,7 @@ const handleReturn = () => {
         >」を返却しようとしています
       </div>
       <div :class="$style.cardContainer">
-        <ChipCard label="キャンセル" @click="handleCancel" />
+        <ChipCard color="secondary" label="キャンセル" @click="handleCancel" />
         <ChipCard label="返却する" @click="handleReturn" />
       </div>
     </template>
