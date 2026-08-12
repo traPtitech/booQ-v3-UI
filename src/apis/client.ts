@@ -1,5 +1,3 @@
-import 'whatwg-fetch';
-
 import { Fetcher } from 'openapi-typescript-fetch';
 
 import type { paths, components } from './openapi';
