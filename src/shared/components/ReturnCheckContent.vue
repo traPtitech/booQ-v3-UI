@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import ChipCard from '@/shared/lib/components/ChipCard.vue';
+import ChipCard from '@/shared/components/ChipCard.vue';
 import { getItem } from '@/apis/client';
 import { useRoute, useRouter } from 'vue-router';
 import returnImg from '/return-check.png';

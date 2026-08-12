@@ -1,5 +1,5 @@
 <template>
-  <div><MainHeader></MainHeader></div>
+  <AppHeader />
 
   <div :class="$style.container">
     <div :class="$style.section">
@@ -33,7 +33,7 @@
 </template>
 
 <script lang="ts" setup>
-import MainHeader from '@/shared/lib/components/MainHeader.vue';
+import AppHeader from '@/shared/components/AppHeader.vue';
 
 const borrowedItems = [
   { src: '/apple-touch-icon.png', alt: '借りている物品1', name: '物品1' },
@@ -52,7 +52,7 @@ const lendingItems = [
 ];
 </script>
 
-<style lang="scss" module>
+<style module>
 .container {
   max-width: 1200px;
   margin: 0 auto;

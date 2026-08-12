@@ -18,13 +18,6 @@ export default defineConfig(({ mode }) => ({
     },
   },
   css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `
-          @use "sass:math";
-        `,
-      },
-    },
     postcss: {
       plugins: [
         postcssNormalize(),

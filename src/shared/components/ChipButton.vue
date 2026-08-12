@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import Button from 'primevue/button';
 import IconClose from './IconClose.vue';
 import IconPlus from './IconPlus.vue';
 
@@ -13,130 +12,105 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   colorType: 'primary',
 });
-defineEmits(['action', 'close']);
+const emit = defineEmits<{
+  action: [];
+  close: [];
+}>();
 
-const chipStyle = computed(() => {
-  return props.type === 'new'
-    ? ['button-newchip']
-    : ['button-chip', `button-${props.colorType ?? 'primary'}`];
-});
+type Variant = 'new' | 'primary' | 'secondary' | 'error';
+
+const variant = computed<Variant>(() =>
+  props.type === 'new' ? 'new' : (props.colorType ?? 'primary'),
+);
 </script>
 
 <template>
-  <div class="background" :class="chipStyle">
-    <Button class="button" :class="chipStyle" @click="$emit('action')">
-      <div class="button-content">
-        <span>{{ props.label }}</span>
-        <IconPlus v-if="props.type === 'new'" />
-      </div>
-    </Button>
-    <Button
+  <div :class="[$style.chip, $style[variant]]">
+    <button type="button" :class="$style.action" @click="emit('action')">
+      <span>{{ props.label }}</span>
+      <IconPlus v-if="props.type === 'new'" />
+    </button>
+    <button
       v-if="props.type === 'show-close'"
-      class="button"
-      :class="chipStyle"
-      @click="$emit('close')"
+      type="button"
+      :class="$style.close"
+      :aria-label="`${props.label}を削除`"
+      @click="emit('close')"
     >
       <IconClose />
-    </Button>
+    </button>
   </div>
 </template>
 
-<style lang="scss" scoped>
-.background {
+<style module>
+.chip {
   display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  justify-content: center;
   gap: 8px;
-  height: 32px;
-  border-radius: 16px;
   padding: 4px 12px;
-  border: 1px solid transparent;
-
-  &.button-newchip {
-    background-color: $color-container-secondary;
-    border-color: $color-container-secondary;
-
-    &:hover {
-      background-color: lighten($color-container-secondary, 8%);
-      border-color: lighten($color-container-secondary, 8%);
-    }
-    &:active {
-      background-color: darken($color-container-secondary, 8%);
-      border-color: darken($color-container-secondary, 8%);
-    }
-  }
-
-  &.button-chip {
-    &.button-primary {
-      background-color: $color-container-primary;
-      border-color: $color-container-primary;
-
-      &:hover {
-        background-color: $color-primary-hover;
-        border-color: $color-border-hover;
-      }
-      &:active {
-        background-color: darken($color-container-primary, 5%);
-        border-color: darken($color-container-primary, 5%);
-      }
-    }
-    &.button-secondary {
-      background-color: $color-secondary;
-      border-color: $color-secondary;
-
-      &:hover {
-        background-color: lighten($color-secondary, 5%);
-        border-color: lighten($color-secondary, 5%);
-      }
-      &:active {
-        background-color: darken($color-secondary, 5%);
-        border-color: darken($color-secondary, 5%);
-      }
-    }
-    &.button-error {
-      background-color: lighten($color-error, 35%);
-      border-color: lighten($color-error, 35%);
-
-      &:hover {
-        background-color: lighten($color-error, 30%);
-        border-color: lighten($color-error, 30%);
-      }
-      &:active {
-        background-color: lighten($color-error, 25%);
-        border-color: lighten($color-error, 25%);
-      }
-    }
-  }
+  border-radius: 16px;
+  box-sizing: border-box;
 }
 
-.button {
+.action,
+.close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+.action {
+  gap: 8px;
   font-size: 16px;
   font-weight: 700;
   line-height: normal;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  color: inherit;
-
-  &.button-newchip {
-    color: $color-text-dimmed;
-  }
-
-  &.button-chip {
-    &.button-primary {
-      color: $color-primary;
-    }
-    &.button-secondary {
-      color: $color-text-secondary;
-    }
-    &.button-error {
-      color: $color-error;
-    }
-  }
+  white-space: nowrap;
 }
 
-.button-content {
-  display: flex;
-  gap: 8px;
-  align-items: center;
+.close {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.action:focus-visible,
+.close:focus-visible {
+  border-radius: 2px;
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.primary {
+  color: var(--color-primary);
+  background: var(--color-primary-container);
+}
+
+.new,
+.secondary {
+  color: var(--color-text-dimmed);
+  background: var(--color-secondary-container);
+}
+
+.primary:hover,
+.new:hover,
+.secondary:hover {
+  background: var(--color-primary-hover);
+}
+
+.error {
+  color: var(--color-error);
+  background: color-mix(in srgb, var(--color-error), white 82%);
+}
+
+.error:hover {
+  background: var(--color-error-hover);
 }
 </style>

@@ -20,6 +20,11 @@ const routes: RouteRecordRaw[] = [
     name: 'return-check',
     component: ReturnCheck,
   },
+  {
+    path: '/playground',
+    name: 'playground',
+    component: () => import('@/pages/Playground.vue'),
+  },
 ];
 
 export default createRouter({

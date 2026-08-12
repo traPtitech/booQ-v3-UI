@@ -6,21 +6,26 @@ on:
       - 'main'
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   packages:
     name: Install Packages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
         with:
-          node-version: 20.x
+          persist-credentials: false
+      - uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # v3.9.1
+        with:
+          node-version: 24.x
       - run: corepack enable pnpm
 
       # pnpm cache
       - id: pnpm
         run: echo "cache-dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v3
+      - uses: actions/cache@6f8efc29b200d32929f49075959781ed54ec270c # v3.5.0
         with:
           path: ${{ steps.pnpm.outputs.cache-dir }}
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -33,10 +38,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: [packages]
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
         with:
-          node-version: 20.x
+          persist-credentials: false
+      - uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # v3.9.1
+        with:
+          node-version: 24.x
       - run: corepack enable pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
@@ -47,10 +54,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: [packages]
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
         with:
-          node-version: 20.x
+          persist-credentials: false
+      - uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # v3.9.1
+        with:
+          node-version: 24.x
       - run: corepack enable pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint --max-warnings=0
@@ -59,10 +68,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: [packages]
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
         with:
-          node-version: 20.x
+          persist-credentials: false
+      - uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # v3.9.1
+        with:
+          node-version: 24.x
       - run: corepack enable pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm prettier --check .
@@ -71,10 +82,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: [packages]
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
         with:
-          node-version: 20.x
+          persist-credentials: false
+      - uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # v3.9.1
+        with:
+          node-version: 24.x
       - run: corepack enable pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm type-check
