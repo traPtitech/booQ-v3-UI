@@ -7,7 +7,7 @@ import returnImg from '/return-check.png';
 
 <template>
   <div
-    class="flex h-full min-h-0 w-full flex-col bg-[var(--color-background)],[font- family:'M_PLUS_1p']"
+    class="flex h-full min-h-0 w-full flex-col bg-[var(--color-background)][font-family:'M_PLUS_1p']"
   >
     <div>
       <AppHeader />
