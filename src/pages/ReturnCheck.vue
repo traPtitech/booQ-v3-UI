@@ -6,7 +6,9 @@ import returnImg from '/return-check.png';
 </script>
 
 <template>
-  <div :class="$style.page">
+  <div
+    class="flex h-full min-h-0 w-full flex-col bg-[var(--color-background)] [font-family:'M_PLUS_1p','Noto_Sans_JP',sans-serif]"
+  >
     <div>
       <AppHeader />
     </div>
@@ -14,57 +16,18 @@ import returnImg from '/return-check.png';
     <Suspense>
       <ReturnCheckContent />
       <template #fallback>
-        <div :class="$style.fallback">
-          <div :class="$style.imgContainer">
-            <img :src="returnImg" alt="" :class="$style.imgImage" />
+        <div class="min-h-0 flex-1">
+          <div class="my-10 flex justify-center">
+            <img :src="returnImg" alt="" class="h-auto max-w-[150px]" />
           </div>
-          <div :class="$style.container">
-            <Skeleton width="80%" height="1.5rem" :class="$style.skeleton" />
-            <Skeleton width="60%" height="1.5rem" :class="$style.skeleton" />
+          <div
+            class="mx-auto mt-5 max-w-[1200px] px-4 text-center text-[1.2rem]"
+          >
+            <Skeleton width="80%" height="1.5rem" class="mx-auto my-2" />
+            <Skeleton width="60%" height="1.5rem" class="mx-auto my-2" />
           </div>
         </div>
       </template>
     </Suspense>
   </div>
 </template>
-
-<style lang="scss" module>
-.page {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-  background: var(--color-background);
-  font-family: 'M PLUS 1p', 'Noto Sans JP', sans-serif;
-}
-
-.fallback {
-  flex: 1;
-  min-height: 0;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px;
-  text-align: center;
-  margin-top: 20px;
-  font-size: 1.2rem;
-}
-
-.imgContainer {
-  display: flex;
-  justify-content: center;
-  margin: 40px 0;
-}
-
-.imgImage {
-  max-width: 150px;
-  height: auto;
-}
-
-.skeleton {
-  margin: 8px auto;
-}
-</style>

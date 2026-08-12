@@ -32,93 +32,42 @@ const handleReturn = () => {
 </script>
 
 <template>
-  <div :class="[$style.content, { [$style.successContent]: returned }]">
+  <div
+    :class="[
+      'box-border min-h-0 w-full flex-1',
+      {
+        'flex flex-col items-center justify-start gap-2 px-8 pt-20 pb-8':
+          returned,
+      },
+    ]"
+  >
     <template v-if="returned">
       <img
         :src="returnOkImg"
         alt=""
         aria-hidden="true"
-        :class="$style.successIcon"
+        class="h-auto max-h-[60vh] w-auto max-w-full shrink self-center object-contain"
       />
-      <p :class="$style.successMessage">返却しました</p>
+      <p
+        class="m-0 whitespace-nowrap text-2xl leading-[normal] font-bold text-black"
+      >
+        返却しました
+      </p>
     </template>
     <template v-else>
-      <div :class="$style.imgContainer">
-        <img :src="returnImg" alt="" :class="$style.imgImage" />
+      <div class="my-10 flex justify-center">
+        <img :src="returnImg" alt="" class="h-auto max-w-[150px]" />
       </div>
-      <div :class="$style.container">
+      <div class="mx-auto mt-5 max-w-[1200px] px-4 text-center text-[1.2rem]">
         <strong>{{ userName }}</strong> さんに「<strong>{{
           productTitle
         }}</strong
         >」を返却しようとしています
       </div>
-      <div :class="$style.cardContainer">
+      <div class="my-10 flex justify-center gap-6">
         <ChipCard color="secondary" label="キャンセル" @click="handleCancel" />
         <ChipCard label="返却する" @click="handleReturn" />
       </div>
     </template>
   </div>
 </template>
-<style lang="scss" module>
-.content {
-  box-sizing: border-box;
-  flex: 1;
-  width: 100%;
-  min-height: 0;
-}
-
-.successContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 8px;
-  padding: 80px 32px 32px;
-}
-
-.successIcon {
-  max-width: 100%;
-  max-height: 60vh;
-  width: auto;
-  height: auto;
-  align-self: center;
-  flex-shrink: 1;
-  object-fit: contain;
-}
-
-.successMessage {
-  margin: 0;
-  color: #000;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px;
-  text-align: center;
-  margin-top: 20px;
-  font-size: 1.2rem;
-}
-
-.imgContainer {
-  display: flex;
-  justify-content: center;
-  margin: 40px 0;
-}
-
-.imgImage {
-  max-width: 150px;
-  height: auto;
-}
-
-.cardContainer {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  margin: 40px 0;
-}
-</style>
