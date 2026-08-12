@@ -7,7 +7,10 @@ import returnImg from '/return-check.png';
 
 <template>
   <div :class="$style.page">
-    <AppHeader />
+    <div>
+      <AppHeader />
+    </div>
+
     <Suspense>
       <ReturnCheckContent />
       <template #fallback>
@@ -16,10 +19,8 @@ import returnImg from '/return-check.png';
             <img :src="returnImg" alt="" :class="$style.imgImage" />
           </div>
           <div :class="$style.container">
-            <Skeleton />
-            さんに「
-            <Skeleton />
-            」を返却しようとしています
+            <Skeleton width="80%" height="1.5rem" :class="$style.skeleton" />
+            <Skeleton width="60%" height="1.5rem" :class="$style.skeleton" />
           </div>
         </div>
       </template>
@@ -61,5 +62,9 @@ import returnImg from '/return-check.png';
 .imgImage {
   max-width: 150px;
   height: auto;
+}
+
+.skeleton {
+  margin: 8px auto;
 }
 </style>

@@ -71,16 +71,19 @@ const handleReturn = () => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 8px;
-  padding: 32px;
+  padding: 80px 32px 32px;
 }
 
 .successIcon {
-  max-width: fit-content;
-  max-height: fit-content;
+  max-width: 100%;
+  max-height: 60vh;
+  width: auto;
+  height: auto;
   align-self: center;
-  flex-shrink: 0;
+  flex-shrink: 1;
+  object-fit: contain;
 }
 
 .successMessage {
