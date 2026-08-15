@@ -34,8 +34,7 @@ const checkboxDesignTokens = {
       v-model="model"
       binary
       :disabled="disabled"
-      :ariaLabel="ariaLabel"
-      :ariaLabelledby="ariaLabelledby"
+      v-bind="{ ariaLabel, ariaLabelledby }"
       :dt="checkboxDesignTokens"
     >
       <template #icon="{ checked }">
@@ -49,8 +48,7 @@ const checkboxDesignTokens = {
     v-model="model"
     binary
     :disabled="disabled"
-    :ariaLabel="ariaLabel"
-    :ariaLabelledby="ariaLabelledby"
+    v-bind="{ ariaLabel, ariaLabelledby }"
     :dt="checkboxDesignTokens"
   >
     <template #icon="{ checked }">
