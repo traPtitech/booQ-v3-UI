@@ -2,6 +2,10 @@
 import { Icon } from '@iconify/vue';
 import PrimeCheckbox from 'primevue/checkbox';
 
+defineOptions({
+  inheritAttrs: false,
+});
+
 defineProps<{
   disabled?: boolean;
   ariaLabel?: string;
@@ -36,7 +40,7 @@ const checkboxDesignTokens = {
       v-model="model"
       binary
       :disabled="disabled"
-      v-bind="{ ariaLabel, ariaLabelledby }"
+      v-bind="{ ariaLabel, ariaLabelledby, ...$attrs }"
       :dt="checkboxDesignTokens"
     >
       <template #icon="{ checked }">
@@ -54,11 +58,15 @@ const checkboxDesignTokens = {
     v-model="model"
     binary
     :disabled="disabled"
-    v-bind="{ ariaLabel, ariaLabelledby }"
+    v-bind="{ ariaLabel, ariaLabelledby, ...$attrs }"
     :dt="checkboxDesignTokens"
   >
     <template #icon="{ checked }">
-      <Icon v-if="checked" icon="mdi:check" class="h-4 w-4 text-white" />
+      <Icon
+        v-if="checked"
+        icon="mdi:check"
+        class="h-4 w-4 text-(--color-text-on-primary)"
+      />
     </template>
   </PrimeCheckbox>
 </template>
