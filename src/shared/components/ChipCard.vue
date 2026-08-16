@@ -19,7 +19,8 @@ const emit = defineEmits<{
     :class="[$style.button, $style[props.color]]"
     @click="emit('click', $event)"
   >
-    {{ props.label }}
+    <span>{{ props.label }}</span>
+    <slot name="right" />
   </button>
 </template>
 

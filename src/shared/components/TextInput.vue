@@ -10,6 +10,7 @@ const props = withDefaults(
     placeholder?: string;
     size?: 'md';
     inputAriaLabel?: string;
+    fluid?: boolean;
   }>(),
   {
     size: 'md',
@@ -24,7 +25,7 @@ const model = defineModel<string | undefined>({ default: '' });
 </script>
 
 <template>
-  <div class="background">
+  <div :class="['background', { 'background-fluid': props.fluid }]">
     <div v-if="$slots['left']" class="side-icon">
       <slot name="left" />
     </div>
@@ -54,6 +55,10 @@ const model = defineModel<string | undefined>({ default: '' });
   border-radius: 4px;
   background: var(--color-background);
   box-sizing: border-box;
+}
+
+.background-fluid {
+  width: 100%;
 }
 
 .background:focus-within {
