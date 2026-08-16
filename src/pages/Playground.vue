@@ -174,6 +174,39 @@
         </div>
       </section>
 
+      <section id="checkbox" :class="$style.section">
+        <div :class="$style.sectionHeading">
+          <div>
+            <p :class="$style.componentPath">CheckboxField.vue</p>
+            <h2 :class="$style.sectionTitle">Checkbox</h2>
+          </div>
+          <span :class="$style.sectionNote">checked / disabled / no slot</span>
+        </div>
+        <div :class="$style.preview">
+          <div :class="$style.previewGroup">
+            <p :class="$style.previewLabel">ラベルあり</p>
+            <div :class="$style.inlineItems">
+              <CheckboxField v-model="checkboxUnchecked">
+                未チェック始まり
+              </CheckboxField>
+              <CheckboxField v-model="checkboxChecked">
+                チェック済み始まり
+              </CheckboxField>
+              <CheckboxField model-value disabled>disabled</CheckboxField>
+            </div>
+          </div>
+          <div :class="$style.previewGroup">
+            <p :class="$style.previewLabel">slotなし(aria-labelのみ)</p>
+            <div :class="$style.inlineItems">
+              <CheckboxField
+                v-model="checkboxNoSlot"
+                v-bind="{ ariaLabel: 'aria-labelのみ' }"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="chips" :class="$style.section">
         <div :class="$style.sectionHeading">
           <div>
@@ -249,6 +282,7 @@ import { ref, watch } from 'vue';
 import { RouterLink } from 'vue-router';
 import AppHeader from '@/shared/components/AppHeader.vue';
 import AppLogo from '@/shared/components/AppLogo.vue';
+import CheckboxField from '@/shared/components/CheckboxField.vue';
 import ChipButton from '@/shared/components/ChipButton.vue';
 import ChipCard from '@/shared/components/ChipCard.vue';
 import IconAvatar from '@/shared/components/IconAvatar.vue';
@@ -266,6 +300,7 @@ const sections = [
   { id: 'brand-icons', label: 'Brand & Icons' },
   { id: 'text-input', label: 'Text Input' },
   { id: 'radio-card', label: 'Radio Card' },
+  { id: 'checkbox', label: 'Checkbox' },
   { id: 'chips', label: 'Chips' },
 ];
 
@@ -290,6 +325,9 @@ const radioOptions = [
 ];
 
 const selectedRadio = ref<string | undefined>('standard');
+const checkboxUnchecked = ref(false);
+const checkboxChecked = ref(true);
+const checkboxNoSlot = ref(false);
 const textInputValue = ref('');
 const lastEvent = ref(
   'コンポーネントを操作すると、ここにイベントが表示されます',
@@ -311,6 +349,24 @@ const handleTextInput = (
 
 watch(selectedRadio, (value) => {
   recordEvent(`RadioCard / ${value} を選択`);
+});
+
+watch(checkboxUnchecked, (value) => {
+  recordEvent(
+    `CheckboxField / 未チェック始まり を ${value ? 'チェック' : '未チェック'} に`,
+  );
+});
+
+watch(checkboxChecked, (value) => {
+  recordEvent(
+    `CheckboxField / チェック済み始まり を ${value ? 'チェック' : '未チェック'} に`,
+  );
+});
+
+watch(checkboxNoSlot, (value) => {
+  recordEvent(
+    `CheckboxField / aria-labelのみ を ${value ? 'チェック' : '未チェック'} に`,
+  );
 });
 </script>
 
