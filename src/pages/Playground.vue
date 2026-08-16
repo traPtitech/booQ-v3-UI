@@ -180,7 +180,7 @@
             <p :class="$style.componentPath">CheckboxField.vue</p>
             <h2 :class="$style.sectionTitle">Checkbox</h2>
           </div>
-          <span :class="$style.sectionNote">checked / disabled</span>
+          <span :class="$style.sectionNote">checked / disabled / no slot</span>
         </div>
         <div :class="$style.preview">
           <div :class="$style.inlineItems">
@@ -191,6 +191,13 @@
               チェック済み始まり
             </CheckboxField>
             <CheckboxField model-value disabled>disabled</CheckboxField>
+          </div>
+          <div :class="$style.inlineItems">
+            <span :class="$style.previewLabel">slotなし(aria-labelのみ)</span>
+            <CheckboxField
+              v-model="checkboxNoSlot"
+              v-bind="{ ariaLabel: '全件選択' }"
+            />
           </div>
         </div>
       </section>
@@ -315,6 +322,7 @@ const radioOptions = [
 const selectedRadio = ref<string | undefined>('standard');
 const checkboxUnchecked = ref(false);
 const checkboxChecked = ref(true);
+const checkboxNoSlot = ref(false);
 const textInputValue = ref('');
 const lastEvent = ref(
   'コンポーネントを操作すると、ここにイベントが表示されます',
@@ -347,6 +355,12 @@ watch(checkboxUnchecked, (value) => {
 watch(checkboxChecked, (value) => {
   recordEvent(
     `CheckboxField / チェック済み始まり を ${value ? 'チェック' : '未チェック'} に`,
+  );
+});
+
+watch(checkboxNoSlot, (value) => {
+  recordEvent(
+    `CheckboxField / slotなし(全件選択) を ${value ? 'チェック' : '未チェック'} に`,
   );
 });
 </script>
