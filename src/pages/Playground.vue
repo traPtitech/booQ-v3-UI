@@ -183,21 +183,26 @@
           <span :class="$style.sectionNote">checked / disabled / no slot</span>
         </div>
         <div :class="$style.preview">
-          <div :class="$style.inlineItems">
-            <CheckboxField v-model="checkboxUnchecked">
-              未チェック始まり
-            </CheckboxField>
-            <CheckboxField v-model="checkboxChecked">
-              チェック済み始まり
-            </CheckboxField>
-            <CheckboxField model-value disabled>disabled</CheckboxField>
+          <div :class="$style.previewGroup">
+            <p :class="$style.previewLabel">ラベルあり</p>
+            <div :class="$style.inlineItems">
+              <CheckboxField v-model="checkboxUnchecked">
+                未チェック始まり
+              </CheckboxField>
+              <CheckboxField v-model="checkboxChecked">
+                チェック済み始まり
+              </CheckboxField>
+              <CheckboxField model-value disabled>disabled</CheckboxField>
+            </div>
           </div>
-          <div :class="$style.inlineItems">
-            <span :class="$style.previewLabel">slotなし(aria-labelのみ)</span>
-            <CheckboxField
-              v-model="checkboxNoSlot"
-              v-bind="{ ariaLabel: '全件選択' }"
-            />
+          <div :class="$style.previewGroup">
+            <p :class="$style.previewLabel">slotなし(aria-labelのみ)</p>
+            <div :class="$style.inlineItems">
+              <CheckboxField
+                v-model="checkboxNoSlot"
+                v-bind="{ ariaLabel: 'aria-labelのみ' }"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -360,7 +365,7 @@ watch(checkboxChecked, (value) => {
 
 watch(checkboxNoSlot, (value) => {
   recordEvent(
-    `CheckboxField / slotなし(全件選択) を ${value ? 'チェック' : '未チェック'} に`,
+    `CheckboxField / aria-labelのみ を ${value ? 'チェック' : '未チェック'} に`,
   );
 });
 </script>
