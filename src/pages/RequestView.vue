@@ -1,5 +1,5 @@
 <template>
-  <div><MainHeader /></div>
+  <div><AppHeader /></div>
   <div :class="$style.main">
     <div :class="$style.header" />
     <div :class="$style.wrapper">
@@ -19,11 +19,7 @@
       </div>
       <div :class="$style.section">
         <h2 :class="$style.text">受け渡し日時設定</h2>
-        <TextInput
-          :class="$style.input"
-          placeholder="YYYY/MM/DD HH:mm"
-          size="lg"
-        />
+        <TextInput :class="$style.input" placeholder="YYYY/MM/DD HH:mm" />
       </div>
       <div :class="$style.section">
         <h2 :class="$style.text">受け取り方法</h2>
@@ -54,8 +50,8 @@
 <script lang="ts" setup>
 import RadioCard from '@/shared/components/RadioCard.vue';
 import TextInput from '@/shared/components/TextInput.vue';
-import ChipCard from '@/shared/lib/components/ChipCard.vue';
-import MainHeader from '@/shared/lib/components/MainHeader.vue';
+import AppHeader from '@/shared/components/AppHeader.vue';
+import ChipCard from '@/shared/components/ChipCard.vue';
 
 const formatDate = (date: Date): string => {
   const year = date.getFullYear();
