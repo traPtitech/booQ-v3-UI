@@ -1,50 +1,35 @@
-@layer primevue;
 @import 'tailwindcss';
 @import 'tailwindcss-primeui';
 
 :root {
   --color-primary: #5cb860;
+  --color-primary-container: #dcefdd;
   --color-primary-hover: #eef7ee;
-  --color-primary-disabled: #a9d0ab;
 
-  --color-secondary: #e2e2e2;
-  --color-secondary-hover: #f0f0f0;
-  --color-secondary-disabled: #c9cac9;
+  --color-secondary: #d8d8db;
+  --color-secondary-container: #f1f1f4;
 
   --color-border: #414143;
-  --color-border-hover: #2b2b2b;
-  --color-error: #ff4500;
-  --color-liked: #ef4c4c;
+  --color-divider: #d8d8db;
 
-  --color-text-primary: #1a1a1c;
-  --color-text-primary-disabled: #7a7a7a;
-  --color-text-secondary: #515151;
+  --color-success: #259d63;
+  --color-warning: #c16800;
+  --color-error: #da373c;
+  --color-error-hover: #fbe7e8;
+  --color-liked: #f95151;
+
+  --color-text: #1a1a1c;
+  --color-text-on-primary: #ffffff;
   --color-text-dimmed: #626264;
+  --color-text-disabled: #949497;
   --color-text-placeholder: #757578;
-  --color-text-white: #ffffff;
-
-  --color-container-primary: #dcefdd;
-  --color-container-secondary: #f1f1f4;
 
   --color-background: #ffffff;
   --color-background-dim: #2b2b2baa;
 
-  --p-primary-50: #eef7ee;
-  --p-primary-100: #dcefdd;
-  --p-primary-200: #b9dfbb;
-  --p-primary-300: #96cf99;
-  --p-primary-400: #73bf77;
-  --p-primary-500: #5cb860;
-  --p-primary-600: #4a934d;
-  --p-primary-700: #376e3a;
-  --p-primary-800: #254a26;
-  --p-primary-900: #122513;
-  --p-primary-950: #091309;
-
-  --p-primary-color: var(--color-primary);
-  --p-primary-contrast-color: var(--color-text-white);
-  --p-primary-hover-color: var(--p-primary-600);
-  --p-primary-active-color: var(--p-primary-700);
+  /* Compatibility aliases for existing consumers. */
+  --color-text-white: var(--color-text-on-primary);
+  --color-text-secondary: var(--color-text-dimmed);
 }
 
 html,
@@ -54,14 +39,17 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--color-background);
+  font-family: 'M PLUS 1p';
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 #app {
-  font-family: 'M PLUS 1p', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: var(--color-text-primary);
+  color: var(--color-text);
   height: 100%;
   width: 100%;
 }
