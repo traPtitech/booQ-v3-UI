@@ -22,6 +22,12 @@ const checkboxDesignTokens = {
     borderColor: 'var(--color-secondary)',
     checkedBackground: 'var(--color-primary)',
     checkedBorderColor: 'var(--color-primary)',
+    focusRing: {
+      width: '2px',
+      style: 'solid',
+      color: 'var(--color-primary)',
+      offset: '2px',
+    },
   },
 };
 </script>
