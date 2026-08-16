@@ -16,6 +16,8 @@ const checkboxDesignTokens = {
     height: '1.5rem',
     background: 'var(--color-secondary-container)',
     borderColor: 'var(--color-secondary)',
+    checkedBackground: 'var(--color-primary)',
+    checkedBorderColor: 'var(--color-primary)',
   },
 };
 </script>
@@ -38,7 +40,11 @@ const checkboxDesignTokens = {
       :dt="checkboxDesignTokens"
     >
       <template #icon="{ checked }">
-        <Icon v-if="checked" icon="mdi:check" class="h-4 w-4 text-white" />
+        <Icon
+          v-if="checked"
+          icon="mdi:check"
+          class="h-4 w-4 text-(--color-text-on-primary)"
+        />
       </template>
     </PrimeCheckbox>
     <span><slot /></span>
