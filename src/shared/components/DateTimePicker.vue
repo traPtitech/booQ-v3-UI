@@ -181,7 +181,9 @@ const handleUpdate = (
 }
 
 .panel
-  :global(.p-datepicker-today .p-datepicker-day:not(.p-datepicker-day-selected)) {
+  :global(
+    .p-datepicker-today .p-datepicker-day:not(.p-datepicker-day-selected)
+  ) {
   font-weight: 800;
 }
 </style>
