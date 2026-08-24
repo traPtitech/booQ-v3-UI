@@ -19,7 +19,12 @@
       </div>
       <div :class="$style.section">
         <h2 :class="$style.text">受け渡し日時設定</h2>
-        <TextInput :class="$style.input" placeholder="YYYY/MM/DD HH:mm" />
+        <DateTimePicker
+          v-model="handoverDate"
+          :min-date="minHandoverDate"
+          full-width
+          input-aria-label="受け渡し日時"
+        />
       </div>
       <div :class="$style.section">
         <h2 :class="$style.text">受け取り方法</h2>
@@ -48,8 +53,9 @@
   </div>
 </template>
 <script lang="ts" setup>
+import { ref } from 'vue';
+import DateTimePicker from '@/shared/components/DateTimePicker.vue';
 import RadioCard from '@/shared/components/RadioCard.vue';
-import TextInput from '@/shared/components/TextInput.vue';
 import AppHeader from '@/shared/components/AppHeader.vue';
 import ChipCard from '@/shared/components/ChipCard.vue';
 
@@ -64,6 +70,8 @@ let userName = 'すきゅう';
 let itemName = 'まちカドまぞく 1巻';
 
 let returnDate = new Date(2024, 1, 22);
+const handoverDate = ref<Date | null>(null);
+const minHandoverDate = new Date();
 </script>
 <style lang="scss" module>
 .main {
@@ -120,10 +128,6 @@ let returnDate = new Date(2024, 1, 22);
   flex-direction: column;
   justify-content: center;
   gap: 8px;
-  .input {
-    // inputの幅を無理やり広げるための詳細度をあげたgrid
-    display: grid;
-  }
 }
 
 .card_wrapper {
