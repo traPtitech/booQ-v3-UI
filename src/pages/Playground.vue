@@ -174,6 +174,53 @@
         </div>
       </section>
 
+      <section id="date-time-picker" :class="$style.section">
+        <div :class="$style.sectionHeading">
+          <div>
+            <p :class="$style.componentPath">DateTimePicker.vue</p>
+            <h2 :class="$style.sectionTitle">Date & Time Picker</h2>
+          </div>
+          <span :class="$style.sectionNote">calendar / time / disabled</span>
+        </div>
+        <div :class="$style.preview">
+          <div :class="$style.datePickerGrid">
+            <div :class="$style.field">
+              <span :class="$style.previewLabel">date + time</span>
+              <DateTimePicker
+                v-model="dateTimeValue"
+                full-width
+                input-aria-label="日時を選択"
+              />
+              <span :class="$style.fieldValue">{{
+                formatSelectedDate(dateTimeValue, true)
+              }}</span>
+            </div>
+            <div :class="$style.field">
+              <span :class="$style.previewLabel">date only</span>
+              <DateTimePicker
+                v-model="dateOnlyValue"
+                :show-time="false"
+                full-width
+                input-aria-label="日付を選択"
+              />
+              <span :class="$style.fieldValue">{{
+                formatSelectedDate(dateOnlyValue, false)
+              }}</span>
+            </div>
+            <div :class="$style.field">
+              <span :class="$style.previewLabel">disabled</span>
+              <DateTimePicker
+                v-model="disabledDateTimeValue"
+                full-width
+                disabled
+                input-aria-label="選択できない日時"
+              />
+              <span :class="$style.fieldValue">操作不可</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="chips" :class="$style.section">
         <div :class="$style.sectionHeading">
           <div>
@@ -251,6 +298,7 @@ import AppHeader from '@/shared/components/AppHeader.vue';
 import AppLogo from '@/shared/components/AppLogo.vue';
 import ChipButton from '@/shared/components/ChipButton.vue';
 import ChipCard from '@/shared/components/ChipCard.vue';
+import DateTimePicker from '@/shared/components/DateTimePicker.vue';
 import IconAvatar from '@/shared/components/IconAvatar.vue';
 import IconClose from '@/shared/components/IconClose.vue';
 import IconPlus from '@/shared/components/IconPlus.vue';
@@ -266,6 +314,7 @@ const sections = [
   { id: 'brand-icons', label: 'Brand & Icons' },
   { id: 'text-input', label: 'Text Input' },
   { id: 'radio-card', label: 'Radio Card' },
+  { id: 'date-time-picker', label: 'Date & Time' },
   { id: 'chips', label: 'Chips' },
 ];
 
@@ -291,6 +340,9 @@ const radioOptions = [
 
 const selectedRadio = ref<string | undefined>('standard');
 const textInputValue = ref('');
+const dateTimeValue = ref<Date | null>(new Date(2026, 7, 16, 18, 30));
+const dateOnlyValue = ref<Date | null>(new Date(2026, 7, 22));
+const disabledDateTimeValue = ref<Date | null>(new Date(2026, 7, 16, 18, 30));
 const lastEvent = ref(
   'コンポーネントを操作すると、ここにイベントが表示されます',
 );
@@ -309,8 +361,25 @@ const handleTextInput = (
   recordEvent(`TextInput / ${size}: "${textInputValue.value}"`);
 };
 
+const formatSelectedDate = (value: Date | null, withTime: boolean) => {
+  if (!value) return '未選択';
+
+  return new Intl.DateTimeFormat('ja-JP', {
+    dateStyle: 'medium',
+    ...(withTime ? { timeStyle: 'short' as const } : {}),
+  }).format(value);
+};
+
 watch(selectedRadio, (value) => {
   recordEvent(`RadioCard / ${value} を選択`);
+});
+
+watch(dateTimeValue, (value) => {
+  recordEvent(`DateTimePicker / ${formatSelectedDate(value, true)}`);
+});
+
+watch(dateOnlyValue, (value) => {
+  recordEvent(`DateTimePicker / ${formatSelectedDate(value, false)}`);
 });
 </script>
 
@@ -569,11 +638,23 @@ watch(selectedRadio, (value) => {
   gap: 24px;
 }
 
+.datePickerGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
 .field {
   display: flex;
   min-width: 0;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.fieldValue {
+  margin-top: 8px;
+  color: var(--color-text-dimmed);
+  font-size: 12px;
 }
 
 .inputAffix {
@@ -655,6 +736,7 @@ watch(selectedRadio, (value) => {
 
   .brandGrid,
   .inputGrid,
+  .datePickerGrid,
   .radioGrid {
     grid-template-columns: 1fr;
   }

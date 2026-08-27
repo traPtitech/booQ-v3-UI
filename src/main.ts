@@ -3,6 +3,7 @@ import { createPinia } from 'pinia';
 import PrimeVue from 'primevue/config';
 import Aura from '@primeuix/themes/aura';
 import { definePreset, palette } from '@primeuix/themes';
+import { primeVueLocaleJa } from './config/primeVueLocaleJa';
 import router from './router';
 import App from './App.vue';
 
@@ -25,6 +26,7 @@ const booQPreset = definePreset(Aura, {
 const app = createApp(App);
 
 app.use(PrimeVue, {
+  locale: primeVueLocaleJa,
   theme: {
     preset: booQPreset,
     options: {
