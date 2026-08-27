@@ -1,11 +1,7 @@
 <script setup lang="ts">
-import { computed, useAttrs } from 'vue';
+import { computed } from 'vue';
 import { Icon } from '@iconify/vue';
 import PrimeDatePicker from 'primevue/datepicker';
-
-defineOptions({
-  inheritAttrs: false,
-});
 
 const props = withDefaults(
   defineProps<{
@@ -30,7 +26,6 @@ const props = withDefaults(
 );
 
 const model = defineModel<Date | null>({ default: null });
-const attrs = useAttrs();
 
 const datePickerDesignTokens = {
   date: {
@@ -65,10 +60,6 @@ const resolvedPlaceholder = computed(
   () =>
     props.placeholder ?? (props.showTime ? 'YYYY/MM/DD HH:mm' : 'YYYY/MM/DD'),
 );
-const forwardedProps = computed(() => ({
-  ...attrs,
-  ariaLabel: props.inputAriaLabel,
-}));
 
 const handleUpdate = (
   value: Date | Date[] | Array<Date | null> | null | undefined,
@@ -82,7 +73,7 @@ const handleUpdate = (
 <template>
   <PrimeDatePicker
     :model-value="model"
-    v-bind="forwardedProps"
+    v-bind="{ ariaLabel: props.inputAriaLabel }"
     :class="[$style.picker, { [$style.fullWidth]: props.fullWidth }]"
     :dt="datePickerDesignTokens"
     :panel-class="$style.panel"

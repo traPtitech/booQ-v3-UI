@@ -22,6 +22,7 @@
         <DateTimePicker
           v-model="handoverDate"
           :min-date="minHandoverDate"
+          :step-minute="HANDOVER_STEP_MINUTE"
           full-width
           input-aria-label="受け渡し日時"
         />
@@ -71,7 +72,11 @@ let itemName = 'まちカドまぞく 1巻';
 
 let returnDate = new Date(2024, 1, 22);
 const handoverDate = ref<Date | null>(null);
-const minHandoverDate = new Date();
+const HANDOVER_STEP_MINUTE = 5;
+const handoverStepMilliseconds = HANDOVER_STEP_MINUTE * 60 * 1000;
+const minHandoverDate = new Date(
+  Math.ceil(Date.now() / handoverStepMilliseconds) * handoverStepMilliseconds,
+);
 </script>
 <style lang="scss" module>
 .main {
@@ -105,7 +110,6 @@ const minHandoverDate = new Date();
   line-height: normal;
 
   .bold {
-    font-family: 'Mplus 1p Bold';
     font-weight: 700;
   }
 }
@@ -117,8 +121,7 @@ const minHandoverDate = new Date();
   line-height: normal;
 
   .datetime {
-    color: var(--Primary-Color, #5cb860);
-    font-family: 'Mplus 1p Bold';
+    color: var(--color-primary);
     font-weight: 700;
   }
 }
