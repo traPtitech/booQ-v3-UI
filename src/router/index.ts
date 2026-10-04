@@ -25,6 +25,11 @@ const routes: RouteRecordRaw[] = [
     name: 'playground',
     component: () => import('@/pages/Playground.vue'),
   },
+  {
+    path: '/request',
+    name: 'request',
+    component: () => import('@/pages/RequestView.vue'),
+  },
 ];
 
 export default createRouter({
