@@ -11,6 +11,11 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/pages/DashBoard.vue'),
   },
   {
+    path: '/items',
+    name: 'items',
+    component: () => import('@/pages/ItemList.vue'),
+  },
+  {
     path: '/register',
     name: 'register',
     component: RegisterView,

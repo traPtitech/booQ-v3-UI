@@ -10,9 +10,13 @@ const props = withDefaults(
     placeholder?: string;
     size?: 'md';
     inputAriaLabel?: string;
+    fullWidth?: boolean;
+    type?: 'text' | 'search';
   }>(),
   {
     size: 'md',
+    fullWidth: false,
+    type: 'text',
   },
 );
 
@@ -24,7 +28,7 @@ const model = defineModel<string | undefined>({ default: '' });
 </script>
 
 <template>
-  <div class="background">
+  <div class="background" :class="{ 'full-width': props.fullWidth }">
     <div v-if="$slots['left']" class="side-icon">
       <slot name="left" />
     </div>
@@ -33,6 +37,7 @@ const model = defineModel<string | undefined>({ default: '' });
       v-bind="$attrs"
       unstyled
       class="text-input"
+      :type="props.type"
       :placeholder="props.placeholder"
       :aria-label="props.inputAriaLabel"
       @focus="emit('focus', $event)"
@@ -60,6 +65,11 @@ const model = defineModel<string | undefined>({ default: '' });
   border-color: var(--color-primary);
   outline: none;
   box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.full-width {
+  width: 100%;
+  min-width: 0;
 }
 
 .text-input {
