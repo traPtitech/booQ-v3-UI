@@ -1,11 +1,16 @@
 <script setup lang="ts">
+import { Icon } from '@iconify/vue';
 interface Props {
   label: string;
   color?: 'primary' | 'error' | 'secondary';
+  type?: 'button' | 'submit' | 'reset';
+  loading?: boolean;
+  disabled?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   color: 'primary',
+  type: 'button',
 });
 
 const emit = defineEmits<{
@@ -15,11 +20,18 @@ const emit = defineEmits<{
 
 <template>
   <button
-    type="button"
+    :type="props.type"
+    :disabled="props.disabled || props.loading"
+    :aria-busy="props.loading"
     :class="[$style.button, $style[props.color]]"
     @click="emit('click', $event)"
   >
     {{ props.label }}
+    <Icon
+      v-if="props.loading"
+      icon="mingcute:loading-3-fill"
+      :class="$style.spinner"
+    />
   </button>
 </template>
 
@@ -44,13 +56,27 @@ const emit = defineEmits<{
   outline: 2px solid var(--color-border);
   outline-offset: 2px;
 }
+.button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.spinner {
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 .primary {
   color: var(--color-text-on-primary);
   background: var(--color-primary);
 }
 
-.primary:hover {
+.primary:enabled:hover {
   color: var(--color-primary);
   background: var(--color-primary-hover);
 }
@@ -60,7 +86,7 @@ const emit = defineEmits<{
   background: var(--color-secondary-container);
 }
 
-.secondary:hover {
+.secondary:enabled:hover {
   background: var(--color-primary-hover);
 }
 
@@ -69,7 +95,7 @@ const emit = defineEmits<{
   background: var(--color-error);
 }
 
-.error:hover {
+.error:enabled:hover {
   color: var(--color-error);
   background: var(--color-error-hover);
 }
