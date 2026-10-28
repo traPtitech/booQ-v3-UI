@@ -4,13 +4,16 @@
       <AppLogo />
     </div>
     <div :class="$style.actions">
-      <button type="button" :class="$style.registerButton">物品を登録</button>
+      <RouterLink :to="{ name: 'register' }" :class="$style.registerButton">
+        物品を登録
+      </RouterLink>
       <IconAvatar :name="userName" :pixel="32" />
     </div>
   </header>
 </template>
 
 <script lang="ts" setup>
+import { RouterLink } from 'vue-router';
 import AppLogo from '@/shared/components/AppLogo.vue';
 import IconAvatar from '@/shared/components/IconAvatar.vue';
 
@@ -56,7 +59,13 @@ const userName = 'o_ER4';
   font-weight: 700;
   line-height: normal;
   white-space: nowrap;
+  text-decoration: none;
   cursor: pointer;
+}
+
+.registerButton:focus-visible {
+  outline: 2px solid var(--color-border);
+  outline-offset: 2px;
 }
 
 .registerButton:hover {
