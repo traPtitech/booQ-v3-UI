@@ -12,6 +12,15 @@ import dns from 'node:dns';
 dns.setDefaultResultOrder('ipv4first');
 
 export default defineConfig(({ mode }) => ({
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),

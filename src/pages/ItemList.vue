@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { computed, ref, useId } from 'vue';
+import { computed, onMounted, ref, useId } from 'vue';
+import { getItems } from '@/apis/client';
+import type { itemSummary, tag } from '@/apis/client';
 import AppHeader from '@/shared/components/AppHeader.vue';
+import ChipCard from '@/shared/components/ChipCard.vue';
 import TextInput from '@/shared/components/TextInput.vue';
-import bookCover from '@/assets/img/item-list-book.png';
 import searchIcon from '@/assets/img/item-list-search.svg';
 import helpIcon from '@/assets/img/item-list-help.svg';
 import tooltipArrow from '@/assets/img/item-list-tooltip-arrow.svg';
@@ -11,22 +13,38 @@ const keyword = ref<string | undefined>('');
 const showHelp = ref(false);
 const helpId = useId();
 
-// API 接続までは、Figma の表示に合わせた仮データを使用する。
-const items = Array.from({ length: 10 }, (_, index) => ({
-  id: index + 1,
-  name: 'まちカドまぞく 1巻',
-  imgUrl: bookCover,
-  tags: ['漫画', 'まちカドまぞく'],
-}));
+type ListItem = Pick<itemSummary, 'id' | 'name' | 'imgUrl'> & {
+  tags: readonly tag[];
+};
+
+const items = ref<ListItem[]>([]);
+const isLoading = ref(true);
+const hasError = ref(false);
+
+const loadItems = async () => {
+  isLoading.value = true;
+  hasError.value = false;
+
+  try {
+    const { data } = await getItems({});
+    items.value = data;
+  } catch {
+    hasError.value = true;
+  } finally {
+    isLoading.value = false;
+  }
+};
+
+onMounted(loadItems);
 
 const visibleItems = computed(() => {
   const terms = (keyword.value ?? '').trim().toLocaleLowerCase().split(/\s+/);
 
-  return items.filter((item) =>
+  return items.value.filter((item) =>
     terms.every((term) =>
       term.startsWith('tag:')
         ? item.tags.some((tag) =>
-            tag.toLocaleLowerCase().includes(term.slice(4)),
+            tag.name.toLocaleLowerCase().includes(term.slice(4)),
           )
         : item.name.toLocaleLowerCase().includes(term),
     ),
@@ -38,7 +56,7 @@ const visibleItems = computed(() => {
   <div :class="$style.page">
     <AppHeader />
 
-    <section :class="$style.main" aria-label="物品一覧">
+    <section :class="$style.main" aria-label="物品一覧" :aria-busy="isLoading">
       <div :class="$style.content">
         <div :class="$style.searchRow" role="search" aria-label="物品を検索">
           <TextInput
@@ -84,24 +102,38 @@ const visibleItems = computed(() => {
           </div>
         </div>
 
+        <p v-if="isLoading" :class="$style.empty" role="status">
+          Loading items...
+        </p>
+        <div v-else-if="hasError" :class="$style.error" role="alert">
+          <p>物品の取得に失敗しました</p>
+          <ChipCard label="再読み込み" color="secondary" @click="loadItems" />
+        </div>
         <ul
-          v-if="visibleItems.length"
+          v-else-if="visibleItems.length"
           :class="$style.items"
           aria-label="検索結果"
         >
           <li v-for="item in visibleItems" :key="item.id" :class="$style.item">
             <img
+              v-if="item.imgUrl"
               :src="item.imgUrl"
-              :alt="`${item.name}の表紙`"
+              :alt="`${item.name}の画像`"
               :class="$style.cover"
               width="160"
               height="227"
+              loading="lazy"
             />
+            <div v-else :class="[$style.cover, $style.noImage]">画像なし</div>
             <p :class="$style.itemName">{{ item.name }}</p>
           </li>
         </ul>
         <p v-else :class="$style.empty" role="status">
-          条件に一致する物品がありません
+          {{
+            keyword?.trim()
+              ? '条件に一致する物品がありません'
+              : '登録された物品がありません'
+          }}
         </p>
       </div>
     </section>
@@ -216,6 +248,28 @@ const visibleItems = computed(() => {
   font-size: 16px;
   font-weight: 500;
   line-height: normal;
+  text-align: center;
+}
+
+.noImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-dimmed);
+  background: var(--color-secondary-container);
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 32px 0;
+  text-align: center;
+}
+
+.error p {
+  margin: 0;
 }
 
 .empty {

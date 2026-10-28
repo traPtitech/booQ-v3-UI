@@ -31,6 +31,9 @@ pnpm install
 pnpm dev
 ```
 
+API requests to `/api` are forwarded to `http://localhost:8080` during development, with the `/api` prefix removed to match the backend routes.
+Start the backend in `../booQ-v3` with `docker compose up --build` before loading API-backed pages.
+
 #### Build
 
 ```shell
