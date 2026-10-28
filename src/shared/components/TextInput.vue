@@ -10,6 +10,8 @@ const props = withDefaults(
     placeholder?: string;
     size?: 'md';
     inputAriaLabel?: string;
+    id?: string;
+    fullWidth?: boolean;
   }>(),
   {
     size: 'md',
@@ -24,13 +26,14 @@ const model = defineModel<string | undefined>({ default: '' });
 </script>
 
 <template>
-  <div class="background">
+  <div class="background" :class="{ fullWidth: props.fullWidth }">
     <div v-if="$slots['left']" class="side-icon">
       <slot name="left" />
     </div>
     <InputText
-      v-model="model"
       v-bind="$attrs"
+      :id="props.id"
+      v-model="model"
       unstyled
       class="text-input"
       :placeholder="props.placeholder"
@@ -60,6 +63,10 @@ const model = defineModel<string | undefined>({ default: '' });
   border-color: var(--color-primary);
   outline: none;
   box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.background.fullWidth {
+  width: 100%;
 }
 
 .text-input {
